@@ -1,0 +1,281 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E14CB43A15F354390011BBFA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB43915F354390011BBFA /* UIKit.framework */; };
+		E14CB43C15F354390011BBFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB43B15F354390011BBFA /* Foundation.framework */; };
+		E14CB43E15F354390011BBFA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB43D15F354390011BBFA /* CoreGraphics.framework */; };
+		E14CB44415F354390011BBFA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E14CB44215F354390011BBFA /* InfoPlist.strings */; };
+		E14CB44615F354390011BBFA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E14CB44515F354390011BBFA /* main.m */; };
+		E14CB44A15F354390011BBFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E14CB44915F354390011BBFA /* AppDelegate.m */; };
+		E14CB44D15F354390011BBFA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14CB44C15F354390011BBFA /* ViewController.m */; };
+		E14CB45015F354390011BBFA /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E14CB44E15F354390011BBFA /* ViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E14CB43515F354390011BBFA /* ParkingFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkingFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E14CB43915F354390011BBFA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E14CB43B15F354390011BBFA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E14CB43D15F354390011BBFA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E14CB44115F354390011BBFA /* ParkingFinder-Info.plist */ = {isa = PBXFileReference; path = "ParkingFinder-Info.plist"; sourceTree = "<group>"; };
+		E14CB44315F354390011BBFA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E14CB44515F354390011BBFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E14CB44715F354390011BBFA /* ParkingFinder-Prefix.pch */ = {isa = PBXFileReference; path = "ParkingFinder-Prefix.pch"; sourceTree = "<group>"; };
+		E14CB44815F354390011BBFA /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		E14CB44915F354390011BBFA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E14CB44B15F354390011BBFA /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		E14CB44C15F354390011BBFA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E14CB44F15F354390011BBFA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E14CB43215F354390011BBFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E14CB43A15F354390011BBFA /* UIKit.framework in Frameworks */,
+				E14CB43C15F354390011BBFA /* Foundation.framework in Frameworks */,
+				E14CB43E15F354390011BBFA /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E14CB42A15F354390011BBFA = {
+			isa = PBXGroup;
+			children = (
+				E14CB43F15F354390011BBFA /* ParkingFinder */,
+				E14CB43815F354390011BBFA /* Frameworks */,
+				E14CB43615F354390011BBFA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E14CB43615F354390011BBFA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E14CB43515F354390011BBFA /* ParkingFinder.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E14CB43815F354390011BBFA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E14CB43915F354390011BBFA /* UIKit.framework */,
+				E14CB43B15F354390011BBFA /* Foundation.framework */,
+				E14CB43D15F354390011BBFA /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E14CB43F15F354390011BBFA /* ParkingFinder */ = {
+			isa = PBXGroup;
+			children = (
+				E14CB44815F354390011BBFA /* AppDelegate.h */,
+				E14CB44915F354390011BBFA /* AppDelegate.m */,
+				E14CB44B15F354390011BBFA /* ViewController.h */,
+				E14CB44C15F354390011BBFA /* ViewController.m */,
+				E14CB44E15F354390011BBFA /* ViewController.xib */,
+				E14CB44015F354390011BBFA /* Supporting Files */,
+			);
+			path = ParkingFinder;
+			sourceTree = "<group>";
+		};
+		E14CB44015F354390011BBFA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E14CB44115F354390011BBFA /* ParkingFinder-Info.plist */,
+				E14CB44215F354390011BBFA /* InfoPlist.strings */,
+				E14CB44515F354390011BBFA /* main.m */,
+				E14CB44715F354390011BBFA /* ParkingFinder-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E14CB43415F354390011BBFA /* ParkingFinder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E14CB45315F354390011BBFA /* Build configuration list for PBXNativeTarget "ParkingFinder" */;
+			buildPhases = (
+				E14CB43115F354390011BBFA /* Sources */,
+				E14CB43215F354390011BBFA /* Frameworks */,
+				E14CB43315F354390011BBFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ParkingFinder;
+			productName = ParkingFinder;
+			productReference = E14CB43515F354390011BBFA /* ParkingFinder.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E14CB42C15F354390011BBFA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = E14CB42F15F354390011BBFA /* Build configuration list for PBXProject "ParkingFinder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E14CB42A15F354390011BBFA;
+			productRefGroup = E14CB43615F354390011BBFA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E14CB43415F354390011BBFA /* ParkingFinder */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E14CB43315F354390011BBFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E14CB44415F354390011BBFA /* InfoPlist.strings in Resources */,
+				E14CB45015F354390011BBFA /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E14CB43115F354390011BBFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E14CB44615F354390011BBFA /* main.m in Sources */,
+				E14CB44A15F354390011BBFA /* AppDelegate.m in Sources */,
+				E14CB44D15F354390011BBFA /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E14CB44215F354390011BBFA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E14CB44315F354390011BBFA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E14CB44E15F354390011BBFA /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E14CB44F15F354390011BBFA /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E14CB45115F354390011BBFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E14CB45215F354390011BBFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E14CB45415F354390011BBFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ParkingFinder/ParkingFinder-Prefix.pch";
+				INFOPLIST_FILE = "ParkingFinder/ParkingFinder-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E14CB45515F354390011BBFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ParkingFinder/ParkingFinder-Prefix.pch";
+				INFOPLIST_FILE = "ParkingFinder/ParkingFinder-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E14CB42F15F354390011BBFA /* Build configuration list for PBXProject "ParkingFinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E14CB45115F354390011BBFA /* Debug */,
+				E14CB45215F354390011BBFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E14CB45315F354390011BBFA /* Build configuration list for PBXNativeTarget "ParkingFinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E14CB45415F354390011BBFA /* Debug */,
+				E14CB45515F354390011BBFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E14CB42C15F354390011BBFA /* Project object */;
+}
