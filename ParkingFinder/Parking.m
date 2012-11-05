@@ -12,43 +12,52 @@
 
 @synthesize idParking, latitude,longitude,type,comments, comment, time, accuracy;
 
--(Parking*) initWithId: (int) idParking andLat:(double) latitude andLon:(double) longitude andAcc:(float)accuracy{
-    self.idParking=idParking;
-    self.latitude=latitude;
-    self.longitude=longitude;
-    self.accuracy=accuracy;
+-(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andAcc:(float)acc{
+    self = [super init];
+    idParking=idP;
+    latitude=lat;
+    longitude=lon;
+    accuracy=acc;
+    return self;
 }
 
--(Parking*) initWithId: (int) idParking andLat:(double) latitude andLon:(double) longitude andType:(int) type andCom:(NSMutableArray*) comments andTime:(long) time andAcc:(float)accuracy {
-    self.idParking=idParking;
-    self.latitude=latitude;
-    self.longitude=longitude;
-    self.type=type;
-    self.comments=comments;
-    self.accuracy=accuracy;
+-(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andType:(int) t andCom:(NSMutableArray*) comms andTime:(long) ti andAcc:(float)acc {
+    self = [super init];
+    idParking=idP;
+    latitude=lat;
+    longitude=lon;
+    type=t;
+    comments=comms;
+    accuracy=acc;
+    return self;
 }
 
--(Parking*) initWithLat: (double) latitude andLon:(double) longitude andType:(int) type andCom:(NSMutableArray*) comments andTime:(long) time andAcc:(float)accuracy{
-    self.latitude=latitude;
-    self.longitude=longitude;
-    self.type=type;
-    self.comments=comments;
-    self.accuracy=accuracy;
+-(Parking*) initWithLat: (double) lat andLon:(double) lon andType:(int) t andCom:(NSMutableArray*) comms andTime:(long) ti andAcc:(float)acc{
+    self = [super init];
+    latitude=lat;
+    longitude=lon;
+    type=t;
+    comments=comms;
+    accuracy=acc;
+    return self;
 }
--(Parking*) initWithLat: (double) latitude andLon:(double) longitude andType:(int) type andCom:(NSString*) comment andAcc:(float)accuracy{
-    self.idParking=idParking;
-    self.latitude=latitude;
-    self.longitude=longitude;
-    self.type=type;
-    self.comment=comment;
-    self.accuracy=accuracy;
+-(Parking*) initWithLat: (double) lat andLon:(double) lon andType:(int) t andCom:(NSString*) comm andAcc:(float)acc{
+    self = [super init];    
+    latitude=lat;
+    longitude=lon;
+    type=t;
+    comment=comm;
+    accuracy=acc;
+    return self;
 }
--(Parking*) initWithId: (int) idParking andLat:(double) latitude andLon:(double) longitude andType:(int) type andCom:(NSString*) comment andAcc:(float)accuracy{
-    self.latitude=latitude;
-    self.longitude=longitude;
-    self.type=type;
-    self.comment=comment;
-    self.accuracy=accuracy;
+-(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andType:(int) t andCom:(NSString*) comm andAcc:(float)acc{
+    self = [super init];    
+    latitude=lat;
+    longitude=lon;
+    type=t;
+    comment=comm;
+    accuracy=acc;
+    return self;
 }
 
 @end

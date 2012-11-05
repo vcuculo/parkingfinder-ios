@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface CommunicationController : NSObject
-@property (nonatomic, retain) NSMutableURLRequest* urlRequest;
-@property (nonatomic, retain) NSString* response;
+
 + (NSMutableURLRequest*) prepareURLforAction: (NSString*) action;
 + (NSString*)sendRequest: (NSString*) data;
 @end
