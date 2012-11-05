@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface Parking : NSObject{
-    int id;
+    int idParking;
     double latitude;
     double longitude;
     int type;
@@ -19,13 +19,13 @@
     float accuracy;
 }
 
--(Parking*) initParking: (int) id anlat:(double) latitude andlon:(double) longitude andacc:(float)accuracy;
--(Parking*) initParking: (int) id anlat:(double) latitude andlon:(double) longitude andtype:(int) type andcom:(NSMutableArray*) comments andtime:(long) time andacc:(float)accuracy;
--(Parking*) initParking: (double) latitude andlon:(double) longitude andtype:(int) type andcom:(NSMutableArray*) comments andtime:(long) time andacc:(float)accuracy;
--(Parking*) initParking: (double) latitude andlon:(double) longitude andtype:(int) type andcom:(NSString*) comment andacc:(float)accuracy;
--(Parking*) initParking: (int) id anlat:(double) latitude andlon:(double) longitude andtype:(int) type andcom:(NSString*) comment andacc:(float)accuracy;
+-(Parking*) initWithId: (int) idParking andLat:(double) latitude andLon:(double) longitude andAcc:(float)accuracy;
+-(Parking*) initWithId: (int) idParking andLat:(double) latitude andLon:(double) longitude andType:(int) type andCom:(NSMutableArray*) comments andTime:(long) time andAcc:(float)accuracy;
+-(Parking*) initWithLat: (double) latitude andLon:(double) longitude andType:(int) type andCom:(NSMutableArray*) comments andTime:(long) time andAcc:(float)accuracy;
+-(Parking*) initWithLat: (double) latitude andLon:(double) longitude andType:(int) type andCom:(NSString*) comment andAcc:(float)accuracy;
+-(Parking*) initWithId: (int) idParking andLat:(double) latitude andLon:(double) longitude andType:(int) type andCom:(NSString*) comment andAcc:(float)accuracy;
 
-@property int id;
+@property int idParking;
 @property double latitude;
 @property double longitude;
 @property int type;

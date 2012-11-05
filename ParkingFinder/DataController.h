@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Parking.h"
 @interface DataController : NSObject
 
 + (NSString*) marshallParking: (Parking*) action;
 + (NSString*) marshallParkingRequest: (double) lat andLon:(double)lon andRange:(float)range;
-+ (NSMutableArray*) unMarshallParking:(String*) response;
-+(NSString*)marshallOccuoyParking:(int) id;
++ (NSMutableArray*) unMarshallParking:(NSString*) response;
++ (NSString*)marshallOccuoyParking:(int) id;
 
 
 @end

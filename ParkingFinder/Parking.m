@@ -12,14 +12,14 @@
 
 @synthesize idParking, latitude,longitude,type,comments, comment, time, accuracy;
 
--(Parking *)initParking:(int)idParking anlat:(double)latitude andlon:(double)longitude andacc:(float)accuracy{
+-(Parking*) initWithId: (int) idParking andLat:(double) latitude andLon:(double) longitude andAcc:(float)accuracy{
     self.idParking=idParking;
     self.latitude=latitude;
     self.longitude=longitude;
     self.accuracy=accuracy;
 }
 
--(Parking*) initParking: (int) idParking anlat:(double) latitude andlon:(double) longitude andtype:(int) type andcom:(NSMutableArray*) comments andtime:(long) time andacc:(float)accuracy{
+-(Parking*) initWithId: (int) idParking andLat:(double) latitude andLon:(double) longitude andType:(int) type andCom:(NSMutableArray*) comments andTime:(long) time andAcc:(float)accuracy {
     self.idParking=idParking;
     self.latitude=latitude;
     self.longitude=longitude;
@@ -28,14 +28,14 @@
     self.accuracy=accuracy;
 }
 
--(Parking *)initParking:(double)latitude andlon:(double)longitude andtype:(int)type andcom:(NSMutableArray *)comments andtime:(long)time andacc:(float)accuracy{
+-(Parking*) initWithLat: (double) latitude andLon:(double) longitude andType:(int) type andCom:(NSMutableArray*) comments andTime:(long) time andAcc:(float)accuracy{
     self.latitude=latitude;
     self.longitude=longitude;
     self.type=type;
     self.comments=comments;
     self.accuracy=accuracy;
 }
--(Parking *)initParking:(int)idParking anlat:(double)latitude andlon:(double)longitude andtype:(int)type andcom:(NSString *)comment andacc:(float)accuracy{
+-(Parking*) initWithLat: (double) latitude andLon:(double) longitude andType:(int) type andCom:(NSString*) comment andAcc:(float)accuracy{
     self.idParking=idParking;
     self.latitude=latitude;
     self.longitude=longitude;
@@ -43,7 +43,7 @@
     self.comment=comment;
     self.accuracy=accuracy;
 }
--(Parking *)initParking:(double)latitude andlon:(double)longitude andtype:(int)type andcom:(NSString *)comment andacc:(float)accuracy{
+-(Parking*) initWithId: (int) idParking andLat:(double) latitude andLon:(double) longitude andType:(int) type andCom:(NSString*) comment andAcc:(float)accuracy{
     self.latitude=latitude;
     self.longitude=longitude;
     self.type=type;
