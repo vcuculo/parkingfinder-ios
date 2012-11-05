@@ -37,10 +37,10 @@ NSUserDefaults * defaults;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setTitle:@"Release Parking"];
     defaults = [NSUserDefaults standardUserDefaults];
     
     //FOR DEBUG ONLY
-    
     [defaults setBool:YES forKey:PARKED_KEY];
     [defaults setDouble:45.45 forKey:LAT_KEY];
     [defaults setDouble:9.18 forKey:LON_KEY];
@@ -53,18 +53,13 @@ NSUserDefaults * defaults;
         int parkId = [defaults integerForKey:ID_KEY];
         int accuracy = [defaults integerForKey:ACC_KEY];
         int type = [defaults integerForKey:TYPE_KEY];
-
-        CLLocationCoordinate2D loc = CLLocationCoordinate2DMake(lat, lon);
-        ParkingAnnotation *annotation = [[ParkingAnnotation alloc] initWithLocation:loc];
         
-        MKAnnotationView* aView = [[[MKAnnotationView alloc] initWithAnnotation:annotation
-                                                                reuseIdentifier:@"MyCustomAnnotation"] autorelease];
-        [aView setImage:[UIImage imageNamed:@"  car_icon.png"]];        
-        [myMap addAnnotation:aView];
+        Parking *p = [[Parking alloc] initWithId:parkId andLat:lat andLon:lon andType:type andCom:nil andAcc:accuracy];
         
+        ParkingAnnotation *annotation = [[ParkingAnnotation alloc] initWithParking:p];
         
+        [myMap addAnnotation:annotation];
     }
-    
 }
 
 - (void)viewDidUnload
@@ -76,6 +71,20 @@ NSUserDefaults * defaults;
 - (void) viewDidAppear:(BOOL)animated {
     if (![Utility isOnline])
         [Utility showConnectionDialog]; 
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    ParkingView *parkingView = (ParkingView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"parkingview"];
+    
+    if(parkingView == nil) {
+    
+        parkingView = [[[ParkingView alloc] initWithAnnotation:annotation reuseIdentifier:@"parkingview"] autorelease];
+    }
+    
+    parkingView.annotation = annotation;
+    
+    return parkingView;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -99,6 +108,7 @@ NSUserDefaults * defaults;
 
 - (void) showInfoDialog {
     ParkingInfoViewController *vc = [[ParkingInfoViewController alloc] init];
+    
     if (parked){
         [vc setLatitude:[defaults doubleForKey:LAT_KEY] andLongitude:[defaults doubleForKey:LON_KEY] andType:[defaults integerForKey:TYPE_KEY] andAccuracy:[defaults integerForKey:ACC_KEY]];
         

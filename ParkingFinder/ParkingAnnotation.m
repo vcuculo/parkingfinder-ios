@@ -8,15 +8,22 @@
 
 #import "ParkingAnnotation.h"
 
-
 @implementation ParkingAnnotation
-@synthesize coordinate;
 
-- (id)initWithLocation:(CLLocationCoordinate2D)coord {
+@synthesize parking;
+
+- (id)initWithParking:(Parking*)p{
     self = [super init];
+    
     if (self) {
-        coordinate = coord;
+        parking = p;
     }
     return self;
+}
+
+- (CLLocationCoordinate2D)coordinate
+{
+    CLLocationCoordinate2D coord = {[parking latitude], [parking longitude]};
+    return coord;
 }
 @end

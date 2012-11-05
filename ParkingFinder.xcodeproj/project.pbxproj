@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D75DD5501647EF8200075AD3 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D75DD54F1647EF8200075AD3 /* Reachability.m */; };
+		D791E1A4164816500036C9EC /* Parking.m in Sources */ = {isa = PBXBuildFile; fileRef = D791E1A3164816500036C9EC /* Parking.m */; };
 		E14CB43A15F354390011BBFA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB43915F354390011BBFA /* UIKit.framework */; };
 		E14CB43C15F354390011BBFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB43B15F354390011BBFA /* Foundation.framework */; };
 		E14CB43E15F354390011BBFA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB43D15F354390011BBFA /* CoreGraphics.framework */; };
@@ -18,7 +20,6 @@
 		E14CB46115F35A9F0011BBFA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB46015F35A9F0011BBFA /* MapKit.framework */; };
 		E14CB46315F35ADF0011BBFA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB46215F35ADF0011BBFA /* CoreLocation.framework */; };
 		E14CB46C15F368BB0011BBFA /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = E14CB46B15F368BB0011BBFA /* Utility.m */; };
-		E14CB49E15F36B9F0011BBFA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E14CB49D15F36B9F0011BBFA /* Reachability.m */; };
 		E14CB4A015F36E140011BBFA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB49F15F36E140011BBFA /* SystemConfiguration.framework */; };
 		E18852DE15F608860029BE07 /* car_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E18852D415F608860029BE07 /* car_icon.png */; };
 		E18852DF15F608860029BE07 /* disabled_park.png in Resources */ = {isa = PBXBuildFile; fileRef = E18852D515F608860029BE07 /* disabled_park.png */; };
@@ -31,7 +32,7 @@
 		E18852E615F608860029BE07 /* toll_park.png in Resources */ = {isa = PBXBuildFile; fileRef = E18852DC15F608860029BE07 /* toll_park.png */; };
 		E18852E715F608860029BE07 /* undefined_park.png in Resources */ = {isa = PBXBuildFile; fileRef = E18852DD15F608860029BE07 /* undefined_park.png */; };
 		E18852EA15F60AEC0029BE07 /* ParkingAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E18852E915F60AEC0029BE07 /* ParkingAnnotation.m */; };
-		E18852F115F610740029BE07 /* ParkingOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = E18852F015F610740029BE07 /* ParkingOverlayView.m */; };
+		E18852F115F610740029BE07 /* ParkingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E18852F015F610740029BE07 /* ParkingView.m */; };
 		E18E47FA15F4CDCA00F681C2 /* ReleaseParkingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18E47F815F4CDCA00F681C2 /* ReleaseParkingViewController.m */; };
 		E18E47FB15F4CDCA00F681C2 /* ReleaseParkingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E18E47F915F4CDCA00F681C2 /* ReleaseParkingViewController.xib */; };
 		E18E480015F4DCE300F681C2 /* ParkingInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18E47FE15F4DCE300F681C2 /* ParkingInfoViewController.m */; };
@@ -41,6 +42,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D75DD54E1647EF8200075AD3 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		D75DD54F1647EF8200075AD3 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		D791E1A21648164F0036C9EC /* Parking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parking.h; sourceTree = "<group>"; };
+		D791E1A3164816500036C9EC /* Parking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parking.m; sourceTree = "<group>"; };
 		E14CB43515F354390011BBFA /* ParkingFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkingFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14CB43915F354390011BBFA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E14CB43B15F354390011BBFA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -58,8 +63,6 @@
 		E14CB46215F35ADF0011BBFA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E14CB46A15F368BA0011BBFA /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		E14CB46B15F368BB0011BBFA /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
-		E14CB49C15F36B9F0011BBFA /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = "../../Downloads/Reachability-1/Classes/Reachability.h"; sourceTree = "<group>"; };
-		E14CB49D15F36B9F0011BBFA /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = "../../Downloads/Reachability-1/Classes/Reachability.m"; sourceTree = "<group>"; };
 		E14CB49F15F36E140011BBFA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E18852D415F608860029BE07 /* car_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_icon.png; sourceTree = "<group>"; };
 		E18852D515F608860029BE07 /* disabled_park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disabled_park.png; sourceTree = "<group>"; };
@@ -73,8 +76,8 @@
 		E18852DD15F608860029BE07 /* undefined_park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = undefined_park.png; sourceTree = "<group>"; };
 		E18852E815F60AEC0029BE07 /* ParkingAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingAnnotation.h; sourceTree = "<group>"; };
 		E18852E915F60AEC0029BE07 /* ParkingAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingAnnotation.m; sourceTree = "<group>"; };
-		E18852EF15F610740029BE07 /* ParkingOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingOverlayView.h; sourceTree = "<group>"; };
-		E18852F015F610740029BE07 /* ParkingOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingOverlayView.m; sourceTree = "<group>"; };
+		E18852EF15F610740029BE07 /* ParkingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingView.h; sourceTree = "<group>"; };
+		E18852F015F610740029BE07 /* ParkingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingView.m; sourceTree = "<group>"; };
 		E18E47F715F4CDCA00F681C2 /* ReleaseParkingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseParkingViewController.h; sourceTree = "<group>"; };
 		E18E47F815F4CDCA00F681C2 /* ReleaseParkingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseParkingViewController.m; sourceTree = "<group>"; };
 		E18E47F915F4CDCA00F681C2 /* ReleaseParkingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReleaseParkingViewController.xib; sourceTree = "<group>"; };
@@ -124,8 +127,8 @@
 		E14CB43815F354390011BBFA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E14CB49C15F36B9F0011BBFA /* Reachability.h */,
-				E14CB49D15F36B9F0011BBFA /* Reachability.m */,
+				D75DD54E1647EF8200075AD3 /* Reachability.h */,
+				D75DD54F1647EF8200075AD3 /* Reachability.m */,
 				E14CB49F15F36E140011BBFA /* SystemConfiguration.framework */,
 				E14CB46215F35ADF0011BBFA /* CoreLocation.framework */,
 				E14CB46015F35A9F0011BBFA /* MapKit.framework */,
@@ -155,11 +158,13 @@
 				E18E47FF15F4DCE300F681C2 /* ParkingInfoViewController.xib */,
 				E18852E815F60AEC0029BE07 /* ParkingAnnotation.h */,
 				E18852E915F60AEC0029BE07 /* ParkingAnnotation.m */,
-				E18852EF15F610740029BE07 /* ParkingOverlayView.h */,
-				E18852F015F610740029BE07 /* ParkingOverlayView.m */,
+				E18852EF15F610740029BE07 /* ParkingView.h */,
+				E18852F015F610740029BE07 /* ParkingView.m */,
 				E14CB44015F354390011BBFA /* Supporting Files */,
 				E14CB46A15F368BA0011BBFA /* Utility.h */,
 				E14CB46B15F368BB0011BBFA /* Utility.m */,
+				D791E1A21648164F0036C9EC /* Parking.h */,
+				D791E1A3164816500036C9EC /* Parking.m */,
 			);
 			path = ParkingFinder;
 			sourceTree = "<group>";
@@ -273,12 +278,13 @@
 				E14CB44A15F354390011BBFA /* AppDelegate.m in Sources */,
 				E14CB44D15F354390011BBFA /* ViewController.m in Sources */,
 				E14CB46C15F368BB0011BBFA /* Utility.m in Sources */,
-				E14CB49E15F36B9F0011BBFA /* Reachability.m in Sources */,
 				E19E8FD115F3789D004DD82A /* SearchParkingViewController.m in Sources */,
 				E18E47FA15F4CDCA00F681C2 /* ReleaseParkingViewController.m in Sources */,
 				E18E480015F4DCE300F681C2 /* ParkingInfoViewController.m in Sources */,
 				E18852EA15F60AEC0029BE07 /* ParkingAnnotation.m in Sources */,
-				E18852F115F610740029BE07 /* ParkingOverlayView.m in Sources */,
+				E18852F115F610740029BE07 /* ParkingView.m in Sources */,
+				D75DD5501647EF8200075AD3 /* Reachability.m in Sources */,
+				D791E1A4164816500036C9EC /* Parking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +362,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParkingFinder/ParkingFinder-Prefix.pch";
 				INFOPLIST_FILE = "ParkingFinder/ParkingFinder-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -369,7 +375,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParkingFinder/ParkingFinder-Prefix.pch";
 				INFOPLIST_FILE = "ParkingFinder/ParkingFinder-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

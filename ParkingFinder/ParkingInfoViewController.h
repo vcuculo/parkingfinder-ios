@@ -14,5 +14,5 @@
 }
 
 - (void) setLatitude:(double)lat andLongitude:(double)lon andType:(int)type andAccuracy:(int)acc;
-
+- (void) setAddress;
 @end
