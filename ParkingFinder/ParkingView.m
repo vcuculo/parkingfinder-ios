@@ -23,15 +23,22 @@
     super.annotation = annotation;
     
     if([annotation isMemberOfClass:[ParkingAnnotation class]]) {
-        parking = (ParkingAnnotation *)annotation;
-        self.image = [UIImage imageNamed:@"car_icon.png"]; 
-    } else {
-        self.image = [UIImage imageNamed:@"undefined_park.png"];
+        parkingAnnotation = (ParkingAnnotation *)annotation;
+        
+        if([parkingAnnotation mycar])
+            //releasing parking
+            self.image = [UIImage imageNamed:@"car_icon.png"]; 
+        else{
+            //check parking type
+            Parking* p = [parkingAnnotation parking];
+            NSInteger type = [p type];
+            // switch..case
+        }
     }
 }
 
 - (void)dealloc {
-    [parking release];
+    [parkingAnnotation release];
     [super dealloc];
 }
 

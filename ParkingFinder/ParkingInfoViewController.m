@@ -58,16 +58,22 @@ NSString* address;
      
      ^(NSArray *placemarks, NSError *error) {
          
-         //Get nearby address
+         if (error){
+             NSLog(@"Geocode failed with error: %@", error);            
+             return;
+         }
          
-         CLPlacemark *placemark = [placemarks objectAtIndex:0];
+         if(placemarks && placemarks.count > 0){
+
+             //Get nearby address
+             CLPlacemark *placemark = [placemarks objectAtIndex:0];
          
-         //String to hold address
+             //String to hold address
+             NSString *addressTxt = [NSString stringWithFormat:@"%@, %@" ,[placemark thoroughfare], [placemark subThoroughfare]];         
          
-         NSString *addressTxt = [NSString stringWithFormat:@"%@, %@" ,[placemark thoroughfare], [placemark subThoroughfare]];         
-         //Set the label text to current location
-         
-         [addressLabel setText:addressTxt];
+             //Set the label text to current location
+             [addressLabel setText:addressTxt];
+         }
          
      }];
 }

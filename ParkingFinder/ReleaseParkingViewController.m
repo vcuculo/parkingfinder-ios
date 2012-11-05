@@ -56,7 +56,7 @@ NSUserDefaults * defaults;
         
         Parking *p = [[Parking alloc] initWithId:parkId andLat:lat andLon:lon andType:type andCom:nil andAcc:accuracy];
         
-        ParkingAnnotation *annotation = [[ParkingAnnotation alloc] initWithParking:p];
+        ParkingAnnotation *annotation = [[ParkingAnnotation alloc] initWithParking:p andMyCar: TRUE];
         
         [myMap addAnnotation:annotation];
     }
@@ -75,6 +75,10 @@ NSUserDefaults * defaults;
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
+    if ([annotation class] == MKUserLocation.class) {
+        return nil;
+    }
+    
     ParkingView *parkingView = (ParkingView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"parkingview"];
     
     if(parkingView == nil) {
@@ -118,12 +122,12 @@ NSUserDefaults * defaults;
         double lat = myMap.userLocation.location.coordinate.latitude;
         double lon = myMap.userLocation.location.coordinate.longitude;
         int acc = myMap.userLocation.location.horizontalAccuracy;
-        
+
         [vc setLatitude:lat andLongitude:lon andType:0 andAccuracy:acc];
     }
     
     [self.navigationController pushViewController:vc animated:YES];
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:NO];        
 }
 
 - (void) showConfirmationDialog {

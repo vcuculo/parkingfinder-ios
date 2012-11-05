@@ -10,13 +10,14 @@
 
 @implementation ParkingAnnotation
 
-@synthesize parking;
+@synthesize parking, mycar;
 
-- (id)initWithParking:(Parking*)p{
+- (id)initWithParking:(Parking*)p andMyCar:(BOOL) m{
     self = [super init];
     
     if (self) {
         parking = p;
+        mycar = m;
     }
     return self;
 }

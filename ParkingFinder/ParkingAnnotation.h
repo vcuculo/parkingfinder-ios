@@ -12,10 +12,12 @@
 
 @interface ParkingAnnotation : NSObject <MKAnnotation> {
     Parking* parking;
+    BOOL mycar;
 }
 @property (nonatomic, retain) Parking* parking;
+@property (nonatomic) BOOL mycar;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
-- (id)initWithParking:(Parking*)p;
+- (id)initWithParking:(Parking*) p andMyCar:(BOOL) m;
 
 @end

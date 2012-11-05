@@ -12,7 +12,7 @@
 #import "ParkingAnnotation.h"
 
 @interface ParkingView : MKAnnotationView {
-    ParkingAnnotation* parking;
+    ParkingAnnotation* parkingAnnotation;
 }
 
 @end
