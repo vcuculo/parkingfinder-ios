@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchParkingViewController.h"
+#import "ReleaseParkingViewController.h"
+#import "Utility.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController{
+    IBOutlet UIButton *searchButton;
+    IBOutlet UIButton *releaseButton;
+}
+
+- (IBAction)searchButton:(id)sender;
+- (IBAction)releaseButton:(id)sender;
 
 @end

@@ -19,13 +19,21 @@
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)drawMapRect:(MKMapRect)mapRect zoomScale:(MKZoomScale)zoomScale inContext:(CGContextRef)ctx
 {
-    // Drawing code
+    
+    UIImage *image = [[UIImage imageNamed:@"car_icon.png"] retain];
+    CGImageRef imageReference = image.CGImage;
+    
+    MKMapRect theMapRect = [self.overlay boundingMapRect];
+    CGRect theRect = [self rectForMapRect:theMapRect];
+    
+    CGContextAddRect(ctx, theRect);
+    CGContextClip(ctx);
+    
+    CGContextDrawImage(ctx, theRect, imageReference);
+    
+    [image release];     
 }
-*/
 
 @end

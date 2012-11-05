@@ -15,6 +15,29 @@
 		E14CB44A15F354390011BBFA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E14CB44915F354390011BBFA /* AppDelegate.m */; };
 		E14CB44D15F354390011BBFA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14CB44C15F354390011BBFA /* ViewController.m */; };
 		E14CB45015F354390011BBFA /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E14CB44E15F354390011BBFA /* ViewController.xib */; };
+		E14CB46115F35A9F0011BBFA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB46015F35A9F0011BBFA /* MapKit.framework */; };
+		E14CB46315F35ADF0011BBFA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB46215F35ADF0011BBFA /* CoreLocation.framework */; };
+		E14CB46C15F368BB0011BBFA /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = E14CB46B15F368BB0011BBFA /* Utility.m */; };
+		E14CB49E15F36B9F0011BBFA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E14CB49D15F36B9F0011BBFA /* Reachability.m */; };
+		E14CB4A015F36E140011BBFA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB49F15F36E140011BBFA /* SystemConfiguration.framework */; };
+		E18852DE15F608860029BE07 /* car_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E18852D415F608860029BE07 /* car_icon.png */; };
+		E18852DF15F608860029BE07 /* disabled_park.png in Resources */ = {isa = PBXBuildFile; fileRef = E18852D515F608860029BE07 /* disabled_park.png */; };
+		E18852E015F608860029BE07 /* free_park.png in Resources */ = {isa = PBXBuildFile; fileRef = E18852D615F608860029BE07 /* free_park.png */; };
+		E18852E115F608860029BE07 /* green_arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = E18852D715F608860029BE07 /* green_arrow_down.png */; };
+		E18852E215F608860029BE07 /* ic_launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = E18852D815F608860029BE07 /* ic_launcher.png */; };
+		E18852E315F608860029BE07 /* orange_arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = E18852D915F608860029BE07 /* orange_arrow_up.png */; };
+		E18852E415F608860029BE07 /* reserved_park.png in Resources */ = {isa = PBXBuildFile; fileRef = E18852DA15F608860029BE07 /* reserved_park.png */; };
+		E18852E515F608860029BE07 /* timed_park.png in Resources */ = {isa = PBXBuildFile; fileRef = E18852DB15F608860029BE07 /* timed_park.png */; };
+		E18852E615F608860029BE07 /* toll_park.png in Resources */ = {isa = PBXBuildFile; fileRef = E18852DC15F608860029BE07 /* toll_park.png */; };
+		E18852E715F608860029BE07 /* undefined_park.png in Resources */ = {isa = PBXBuildFile; fileRef = E18852DD15F608860029BE07 /* undefined_park.png */; };
+		E18852EA15F60AEC0029BE07 /* ParkingAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E18852E915F60AEC0029BE07 /* ParkingAnnotation.m */; };
+		E18852F115F610740029BE07 /* ParkingOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = E18852F015F610740029BE07 /* ParkingOverlayView.m */; };
+		E18E47FA15F4CDCA00F681C2 /* ReleaseParkingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18E47F815F4CDCA00F681C2 /* ReleaseParkingViewController.m */; };
+		E18E47FB15F4CDCA00F681C2 /* ReleaseParkingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E18E47F915F4CDCA00F681C2 /* ReleaseParkingViewController.xib */; };
+		E18E480015F4DCE300F681C2 /* ParkingInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18E47FE15F4DCE300F681C2 /* ParkingInfoViewController.m */; };
+		E18E480115F4DCE300F681C2 /* ParkingInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E18E47FF15F4DCE300F681C2 /* ParkingInfoViewController.xib */; };
+		E19E8FD115F3789D004DD82A /* SearchParkingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19E8FCF15F3789D004DD82A /* SearchParkingViewController.m */; };
+		E19E8FD215F3789D004DD82A /* SearchParkingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19E8FD015F3789D004DD82A /* SearchParkingViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,15 +45,45 @@
 		E14CB43915F354390011BBFA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E14CB43B15F354390011BBFA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E14CB43D15F354390011BBFA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		E14CB44115F354390011BBFA /* ParkingFinder-Info.plist */ = {isa = PBXFileReference; path = "ParkingFinder-Info.plist"; sourceTree = "<group>"; };
+		E14CB44115F354390011BBFA /* ParkingFinder-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ParkingFinder-Info.plist"; sourceTree = "<group>"; };
 		E14CB44315F354390011BBFA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E14CB44515F354390011BBFA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E14CB44715F354390011BBFA /* ParkingFinder-Prefix.pch */ = {isa = PBXFileReference; path = "ParkingFinder-Prefix.pch"; sourceTree = "<group>"; };
-		E14CB44815F354390011BBFA /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		E14CB44715F354390011BBFA /* ParkingFinder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParkingFinder-Prefix.pch"; sourceTree = "<group>"; };
+		E14CB44815F354390011BBFA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E14CB44915F354390011BBFA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E14CB44B15F354390011BBFA /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		E14CB44B15F354390011BBFA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E14CB44C15F354390011BBFA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E14CB44F15F354390011BBFA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		E14CB46015F35A9F0011BBFA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E14CB46215F35ADF0011BBFA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E14CB46A15F368BA0011BBFA /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		E14CB46B15F368BB0011BBFA /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		E14CB49C15F36B9F0011BBFA /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = "../../Downloads/Reachability-1/Classes/Reachability.h"; sourceTree = "<group>"; };
+		E14CB49D15F36B9F0011BBFA /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = "../../Downloads/Reachability-1/Classes/Reachability.m"; sourceTree = "<group>"; };
+		E14CB49F15F36E140011BBFA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E18852D415F608860029BE07 /* car_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_icon.png; sourceTree = "<group>"; };
+		E18852D515F608860029BE07 /* disabled_park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disabled_park.png; sourceTree = "<group>"; };
+		E18852D615F608860029BE07 /* free_park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = free_park.png; sourceTree = "<group>"; };
+		E18852D715F608860029BE07 /* green_arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_arrow_down.png; sourceTree = "<group>"; };
+		E18852D815F608860029BE07 /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
+		E18852D915F608860029BE07 /* orange_arrow_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange_arrow_up.png; sourceTree = "<group>"; };
+		E18852DA15F608860029BE07 /* reserved_park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reserved_park.png; sourceTree = "<group>"; };
+		E18852DB15F608860029BE07 /* timed_park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timed_park.png; sourceTree = "<group>"; };
+		E18852DC15F608860029BE07 /* toll_park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toll_park.png; sourceTree = "<group>"; };
+		E18852DD15F608860029BE07 /* undefined_park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = undefined_park.png; sourceTree = "<group>"; };
+		E18852E815F60AEC0029BE07 /* ParkingAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingAnnotation.h; sourceTree = "<group>"; };
+		E18852E915F60AEC0029BE07 /* ParkingAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingAnnotation.m; sourceTree = "<group>"; };
+		E18852EF15F610740029BE07 /* ParkingOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingOverlayView.h; sourceTree = "<group>"; };
+		E18852F015F610740029BE07 /* ParkingOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingOverlayView.m; sourceTree = "<group>"; };
+		E18E47F715F4CDCA00F681C2 /* ReleaseParkingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseParkingViewController.h; sourceTree = "<group>"; };
+		E18E47F815F4CDCA00F681C2 /* ReleaseParkingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseParkingViewController.m; sourceTree = "<group>"; };
+		E18E47F915F4CDCA00F681C2 /* ReleaseParkingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReleaseParkingViewController.xib; sourceTree = "<group>"; };
+		E18E47FD15F4DCE300F681C2 /* ParkingInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingInfoViewController.h; sourceTree = "<group>"; };
+		E18E47FE15F4DCE300F681C2 /* ParkingInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingInfoViewController.m; sourceTree = "<group>"; };
+		E18E47FF15F4DCE300F681C2 /* ParkingInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParkingInfoViewController.xib; sourceTree = "<group>"; };
+		E19E8FCE15F3789D004DD82A /* SearchParkingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchParkingViewController.h; sourceTree = "<group>"; };
+		E19E8FCF15F3789D004DD82A /* SearchParkingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchParkingViewController.m; sourceTree = "<group>"; };
+		E19E8FD015F3789D004DD82A /* SearchParkingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchParkingViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +91,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E14CB4A015F36E140011BBFA /* SystemConfiguration.framework in Frameworks */,
+				E14CB46315F35ADF0011BBFA /* CoreLocation.framework in Frameworks */,
+				E14CB46115F35A9F0011BBFA /* MapKit.framework in Frameworks */,
 				E14CB43A15F354390011BBFA /* UIKit.framework in Frameworks */,
 				E14CB43C15F354390011BBFA /* Foundation.framework in Frameworks */,
 				E14CB43E15F354390011BBFA /* CoreGraphics.framework in Frameworks */,
@@ -50,6 +106,7 @@
 		E14CB42A15F354390011BBFA = {
 			isa = PBXGroup;
 			children = (
+				E18852D315F608860029BE07 /* images */,
 				E14CB43F15F354390011BBFA /* ParkingFinder */,
 				E14CB43815F354390011BBFA /* Frameworks */,
 				E14CB43615F354390011BBFA /* Products */,
@@ -67,6 +124,11 @@
 		E14CB43815F354390011BBFA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E14CB49C15F36B9F0011BBFA /* Reachability.h */,
+				E14CB49D15F36B9F0011BBFA /* Reachability.m */,
+				E14CB49F15F36E140011BBFA /* SystemConfiguration.framework */,
+				E14CB46215F35ADF0011BBFA /* CoreLocation.framework */,
+				E14CB46015F35A9F0011BBFA /* MapKit.framework */,
 				E14CB43915F354390011BBFA /* UIKit.framework */,
 				E14CB43B15F354390011BBFA /* Foundation.framework */,
 				E14CB43D15F354390011BBFA /* CoreGraphics.framework */,
@@ -82,7 +144,22 @@
 				E14CB44B15F354390011BBFA /* ViewController.h */,
 				E14CB44C15F354390011BBFA /* ViewController.m */,
 				E14CB44E15F354390011BBFA /* ViewController.xib */,
+				E18E47F715F4CDCA00F681C2 /* ReleaseParkingViewController.h */,
+				E18E47F815F4CDCA00F681C2 /* ReleaseParkingViewController.m */,
+				E18E47F915F4CDCA00F681C2 /* ReleaseParkingViewController.xib */,
+				E19E8FCE15F3789D004DD82A /* SearchParkingViewController.h */,
+				E19E8FCF15F3789D004DD82A /* SearchParkingViewController.m */,
+				E19E8FD015F3789D004DD82A /* SearchParkingViewController.xib */,
+				E18E47FD15F4DCE300F681C2 /* ParkingInfoViewController.h */,
+				E18E47FE15F4DCE300F681C2 /* ParkingInfoViewController.m */,
+				E18E47FF15F4DCE300F681C2 /* ParkingInfoViewController.xib */,
+				E18852E815F60AEC0029BE07 /* ParkingAnnotation.h */,
+				E18852E915F60AEC0029BE07 /* ParkingAnnotation.m */,
+				E18852EF15F610740029BE07 /* ParkingOverlayView.h */,
+				E18852F015F610740029BE07 /* ParkingOverlayView.m */,
 				E14CB44015F354390011BBFA /* Supporting Files */,
+				E14CB46A15F368BA0011BBFA /* Utility.h */,
+				E14CB46B15F368BB0011BBFA /* Utility.m */,
 			);
 			path = ParkingFinder;
 			sourceTree = "<group>";
@@ -96,6 +173,24 @@
 				E14CB44715F354390011BBFA /* ParkingFinder-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E18852D315F608860029BE07 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				E18852D415F608860029BE07 /* car_icon.png */,
+				E18852D515F608860029BE07 /* disabled_park.png */,
+				E18852D615F608860029BE07 /* free_park.png */,
+				E18852D715F608860029BE07 /* green_arrow_down.png */,
+				E18852D815F608860029BE07 /* ic_launcher.png */,
+				E18852D915F608860029BE07 /* orange_arrow_up.png */,
+				E18852DA15F608860029BE07 /* reserved_park.png */,
+				E18852DB15F608860029BE07 /* timed_park.png */,
+				E18852DC15F608860029BE07 /* toll_park.png */,
+				E18852DD15F608860029BE07 /* undefined_park.png */,
+			);
+			name = images;
+			path = ParkingFinder/images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,6 +227,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				English,
 			);
 			mainGroup = E14CB42A15F354390011BBFA;
 			productRefGroup = E14CB43615F354390011BBFA /* Products */;
@@ -150,6 +246,19 @@
 			files = (
 				E14CB44415F354390011BBFA /* InfoPlist.strings in Resources */,
 				E14CB45015F354390011BBFA /* ViewController.xib in Resources */,
+				E19E8FD215F3789D004DD82A /* SearchParkingViewController.xib in Resources */,
+				E18E47FB15F4CDCA00F681C2 /* ReleaseParkingViewController.xib in Resources */,
+				E18E480115F4DCE300F681C2 /* ParkingInfoViewController.xib in Resources */,
+				E18852DE15F608860029BE07 /* car_icon.png in Resources */,
+				E18852DF15F608860029BE07 /* disabled_park.png in Resources */,
+				E18852E015F608860029BE07 /* free_park.png in Resources */,
+				E18852E115F608860029BE07 /* green_arrow_down.png in Resources */,
+				E18852E215F608860029BE07 /* ic_launcher.png in Resources */,
+				E18852E315F608860029BE07 /* orange_arrow_up.png in Resources */,
+				E18852E415F608860029BE07 /* reserved_park.png in Resources */,
+				E18852E515F608860029BE07 /* timed_park.png in Resources */,
+				E18852E615F608860029BE07 /* toll_park.png in Resources */,
+				E18852E715F608860029BE07 /* undefined_park.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +272,13 @@
 				E14CB44615F354390011BBFA /* main.m in Sources */,
 				E14CB44A15F354390011BBFA /* AppDelegate.m in Sources */,
 				E14CB44D15F354390011BBFA /* ViewController.m in Sources */,
+				E14CB46C15F368BB0011BBFA /* Utility.m in Sources */,
+				E14CB49E15F36B9F0011BBFA /* Reachability.m in Sources */,
+				E19E8FD115F3789D004DD82A /* SearchParkingViewController.m in Sources */,
+				E18E47FA15F4CDCA00F681C2 /* ReleaseParkingViewController.m in Sources */,
+				E18E480015F4DCE300F681C2 /* ParkingInfoViewController.m in Sources */,
+				E18852EA15F60AEC0029BE07 /* ParkingAnnotation.m in Sources */,
+				E18852F115F610740029BE07 /* ParkingOverlayView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +310,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -219,7 +335,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -236,9 +352,11 @@
 		E14CB45415F354390011BBFA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParkingFinder/ParkingFinder-Prefix.pch";
 				INFOPLIST_FILE = "ParkingFinder/ParkingFinder-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -247,9 +365,11 @@
 		E14CB45515F354390011BBFA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParkingFinder/ParkingFinder-Prefix.pch";
 				INFOPLIST_FILE = "ParkingFinder/ParkingFinder-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -274,6 +394,7 @@
 				E14CB45515F354390011BBFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

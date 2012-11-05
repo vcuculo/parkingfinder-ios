@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import "Utility.h"
+#import "ParkingInfoViewController.h"
+#import "ParkingAnnotation.h"
 
-@interface ReleaseParkingViewController : UIViewController
-
+@interface ReleaseParkingViewController : UIViewController <MKMapViewDelegate>{
+    IBOutlet MKMapView *myMap;
+    IBOutlet UIButton *releaseButton;
+}
+-(IBAction)releaseParking:(id)sender;
+-(void) showConfirmationDialog;
 @end

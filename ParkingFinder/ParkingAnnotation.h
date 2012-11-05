@@ -6,8 +6,14 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ParkingOverlayItem : MKOverlayView
+@interface ParkingAnnotation : NSObject <MKAnnotation> {
+    CLLocationCoordinate2D coordinate;
+}
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+- (id)initWithLocation:(CLLocationCoordinate2D)coord;
 
 @end

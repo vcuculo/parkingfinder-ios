@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Reachability.h"
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MapKit/MapKit.h>
 
 @interface Utility : NSObject
-
++(BOOL)isOnline;
++(void)showConnectionDialog;
 @end

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Utility.h"
 
-@interface ParkingInfoViewController : UIViewController
+@interface ParkingInfoViewController : UIViewController {
+    IBOutlet UILabel *latLabel, *lonLabel, *typeLabel, *addressLabel;
+}
+
+- (void) setLatitude:(double)lat andLongitude:(double)lon andType:(int)type andAccuracy:(int)acc;
 
 @end
