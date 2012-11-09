@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D30B6D98164D417C007C77C0 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B6D97164D417C007C77C0 /* Comment.m */; };
 		D335B56D1647EFB00052A63C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D335B56C1647EFB00052A63C /* Reachability.m */; };
 		D335B5701647F8760052A63C /* CommunicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D335B56F1647F8760052A63C /* CommunicationController.m */; };
 		D335B573164807260052A63C /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = D335B572164807260052A63C /* DataController.m */; };
@@ -56,6 +57,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D30B6D95164D412A007C77C0 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = SOURCE_ROOT; };
+		D30B6D97164D417C007C77C0 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = SOURCE_ROOT; };
 		D335B56B1647EFB00052A63C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		D335B56C1647EFB00052A63C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		D335B56E1647F8450052A63C /* CommunicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationController.h; sourceTree = "<group>"; };
@@ -245,6 +248,8 @@
 				D335B572164807260052A63C /* DataController.m */,
 				D335B59A16480D880052A63C /* Parking.h */,
 				D335B59B16480D980052A63C /* Parking.m */,
+				D30B6D95164D412A007C77C0 /* Comment.h */,
+				D30B6D97164D417C007C77C0 /* Comment.m */,
 			);
 			path = ParkingFinder;
 			sourceTree = "<group>";
@@ -379,6 +384,7 @@
 				D335B598164809B10052A63C /* SBJsonUTF8Stream.m in Sources */,
 				D335B599164809B10052A63C /* SBJsonWriter.m in Sources */,
 				D335B59C16480D990052A63C /* Parking.m in Sources */,
+				D30B6D98164D417C007C77C0 /* Comment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
