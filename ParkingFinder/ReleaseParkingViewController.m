@@ -23,6 +23,8 @@ static NSString *const LON_KEY = @"longitude";
 static NSString *const ACC_KEY = @"accuracy";
 static NSString *const PARKED_KEY = @"parked";
 BOOL parked = false;
+double lat, lon;
+int parkId, accuracy, type;
 NSUserDefaults * defaults;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -44,15 +46,16 @@ NSUserDefaults * defaults;
     [defaults setBool:YES forKey:PARKED_KEY];
     [defaults setDouble:45.45 forKey:LAT_KEY];
     [defaults setDouble:9.18 forKey:LON_KEY];
+    [defaults setInteger:0 forKey:ID_KEY];
     //FOR DEBUG ONLY
     
     parked = [defaults boolForKey:PARKED_KEY];    
     if (parked) {
-        double lat = [defaults doubleForKey:LAT_KEY];
-        double lon = [defaults doubleForKey:LON_KEY];
-        int parkId = [defaults integerForKey:ID_KEY];
-        int accuracy = [defaults integerForKey:ACC_KEY];
-        int type = [defaults integerForKey:TYPE_KEY];
+        lat = [defaults doubleForKey:LAT_KEY];
+        lon = [defaults doubleForKey:LON_KEY];
+        parkId = [defaults integerForKey:ID_KEY];
+        accuracy = [defaults integerForKey:ACC_KEY];
+        type = [defaults integerForKey:TYPE_KEY];
         
         Parking *p = [[Parking alloc] initWithId:parkId andLat:lat andLon:lon andType:type andCom:nil andAcc:accuracy];
         
@@ -114,16 +117,15 @@ NSUserDefaults * defaults;
     ParkingInfoViewController *vc = [[ParkingInfoViewController alloc] init];
     
     if (parked){
-        [vc setLatitude:[defaults doubleForKey:LAT_KEY] andLongitude:[defaults doubleForKey:LON_KEY] andType:[defaults integerForKey:TYPE_KEY] andAccuracy:[defaults integerForKey:ACC_KEY]];
-        
+        [vc setLatitude:lat andLongitude:lon andType:type andAccuracy:accuracy];
     }
     else
     {
-        double lat = myMap.userLocation.location.coordinate.latitude;
-        double lon = myMap.userLocation.location.coordinate.longitude;
-        int acc = myMap.userLocation.location.horizontalAccuracy;
+        double mLat = myMap.userLocation.location.coordinate.latitude;
+        double mLon = myMap.userLocation.location.coordinate.longitude;
+        int mAcc = myMap.userLocation.location.horizontalAccuracy;
 
-        [vc setLatitude:lat andLongitude:lon andType:0 andAccuracy:acc];
+        [vc setLatitude:mLat andLongitude:mLon andType:0 andAccuracy:mAcc];
     }
     
     [self.navigationController pushViewController:vc animated:YES];

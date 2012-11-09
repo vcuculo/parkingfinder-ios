@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  ParkingFinder
+
+  Created by Vittorio Cuculo on 11/9/12.
+  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+*/
+"UNDEFINED_PARKING" = "Undefined";
+"FREE_PARKING" = "Free";
+"TOLL_PARKING" = "Toll";
+"RESIDENTS_PARKING" = "Residents";
+"DISABLED_PARKING" = "For disabled";
+"TIMED_PARKING" = "Timed";

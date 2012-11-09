@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D75DD5501647EF8200075AD3 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D75DD54F1647EF8200075AD3 /* Reachability.m */; };
+		D76FD9E4164D669A008D9E78 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D76FD9E6164D669A008D9E78 /* Localizable.strings */; };
 		D791E1A4164816500036C9EC /* Parking.m in Sources */ = {isa = PBXBuildFile; fileRef = D791E1A3164816500036C9EC /* Parking.m */; };
 		E14CB43A15F354390011BBFA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB43915F354390011BBFA /* UIKit.framework */; };
 		E14CB43C15F354390011BBFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB43B15F354390011BBFA /* Foundation.framework */; };
@@ -44,6 +45,8 @@
 /* Begin PBXFileReference section */
 		D75DD54E1647EF8200075AD3 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		D75DD54F1647EF8200075AD3 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		D76FD9E5164D669A008D9E78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D76FD9E7164D66A4008D9E78 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D791E1A21648164F0036C9EC /* Parking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parking.h; sourceTree = "<group>"; };
 		D791E1A3164816500036C9EC /* Parking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parking.m; sourceTree = "<group>"; };
 		E14CB43515F354390011BBFA /* ParkingFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkingFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +179,7 @@
 				E14CB44215F354390011BBFA /* InfoPlist.strings */,
 				E14CB44515F354390011BBFA /* main.m */,
 				E14CB44715F354390011BBFA /* ParkingFinder-Prefix.pch */,
+				D76FD9E6164D669A008D9E78 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -233,6 +237,7 @@
 			knownRegions = (
 				en,
 				English,
+				it,
 			);
 			mainGroup = E14CB42A15F354390011BBFA;
 			productRefGroup = E14CB43615F354390011BBFA /* Products */;
@@ -264,6 +269,7 @@
 				E18852E515F608860029BE07 /* timed_park.png in Resources */,
 				E18852E615F608860029BE07 /* toll_park.png in Resources */,
 				E18852E715F608860029BE07 /* undefined_park.png in Resources */,
+				D76FD9E4164D669A008D9E78 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +297,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		D76FD9E6164D669A008D9E78 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D76FD9E5164D669A008D9E78 /* en */,
+				D76FD9E7164D66A4008D9E78 /* it */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		E14CB44215F354390011BBFA /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
