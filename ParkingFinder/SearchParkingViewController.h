@@ -13,5 +13,10 @@
 @interface SearchParkingViewController : UIViewController <MKMapViewDelegate>{
     IBOutlet MKMapView *myMap;
     IBOutlet UIButton *releaseButton;
+    IBOutlet UIActivityIndicatorView * activityView;
 }
+
+@property(nonatomic,retain)  UIActivityIndicatorView * activityView;
+
+
 @end
