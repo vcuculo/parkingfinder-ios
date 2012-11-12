@@ -11,3 +11,14 @@
 "RESIDENTS_PARKING" = "Residents";
 "DISABLED_PARKING" = "For disabled";
 "TIMED_PARKING" = "Timed";
+"RELEASE_PARK" = "Release parking";
+"FREEING_PARKING" = "Freeing a Parking";
+"CONFIRM_RELEASE_PARKING" = "Are you freeing this parking?";
+"CANCEL" = "Cancel";
+"ADD_PARK_INFORMATION" = "Would you insert information about the parking you are freeing?";
+"PARKING_FINDER" = "Parking Finder";
+"LATITUDE" = "Latitude: ";
+"LONGITUDE" = "Longitude: ";
+"TYPE" = "Type: ";
+"ADDRESS" = "Address: ";
+"COMMENT" = "Comment: ";

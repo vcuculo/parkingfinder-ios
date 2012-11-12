@@ -39,7 +39,7 @@ NSUserDefaults * defaults;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitle:@"Release Parking"];
+    [self setTitle:NSLocalizedString(@"RELEASE_PARK",nil)];
     defaults = [NSUserDefaults standardUserDefaults];
     
     //FOR DEBUG ONLY
@@ -115,7 +115,8 @@ NSUserDefaults * defaults;
 
 - (void) showInfoDialog {
     ParkingInfoViewController *vc = [[ParkingInfoViewController alloc] init];
-    
+    UINavigationController *navController = self.navigationController;
+
     if (parked){
         [vc setLatitude:lat andLongitude:lon andType:type andAccuracy:accuracy];
     }
@@ -128,22 +129,22 @@ NSUserDefaults * defaults;
         [vc setLatitude:mLat andLongitude:mLon andType:0 andAccuracy:mAcc];
     }
     
-    [self.navigationController pushViewController:vc animated:YES];
-    [self.navigationController popViewControllerAnimated:NO];        
+    [navController popViewControllerAnimated:NO];
+    [navController pushViewController:vc animated:YES];
 }
 
 - (void) showConfirmationDialog {
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Liberando un parcheggio" 
-                                                    message:@"Sei sicuro di voler liberare questo parcheggio?" 
-                                                   delegate:self cancelButtonTitle:@"Annulla" otherButtonTitles:@"OK", nil] autorelease];
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"FREEING_PARKING",nil)
+                                                    message:NSLocalizedString(@"CONFIRM_RELEASE_PARKING",nil) 
+                                                   delegate:self cancelButtonTitle:NSLocalizedString(@"CANCEL",nil) otherButtonTitles:@"OK", nil] autorelease];
     [alert setTag:ALERTVIEW_CONFIRM_TAG];
     [alert show];
 }
 
 - (void) showReleaseDialog {
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Liberando un parcheggio" 
-                                                    message:@"Vuoi inserire informazioni riguardo il parcheggio che hai appena liberato?" 
-                                                   delegate:self cancelButtonTitle:@"Annulla" otherButtonTitles:@"OK", nil] autorelease];
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"FREEING_PARKING",nil)
+                                                    message:NSLocalizedString(@"ADD_PARK_INFORMATION",nil)
+                                                   delegate:self cancelButtonTitle:NSLocalizedString(@"CANCEL",nil) otherButtonTitles:@"OK", nil] autorelease];
     [alert setTag:ALERTVIEW_INFO_TAG];
     [alert show];
 }

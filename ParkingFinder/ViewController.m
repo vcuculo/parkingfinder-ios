@@ -24,8 +24,8 @@ static NSString *const PARKED_KEY = @"parked";
     
     if (parking){ //abbiamo un parcheggio memorizzato
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Operazione non permessa" 
-                                                        message:@"Per cercare un nuovo parcheggio devi prima liberare quello occupato." 
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ACTION_DISALLOWED",nil)
+                                                        message:NSLocalizedString(@"RELEASE_PARKING_FIRST",nil) 
                                                        delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         
         [alert show];
@@ -46,7 +46,8 @@ static NSString *const PARKED_KEY = @"parked";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    [releaseButton setTitle: NSLocalizedString(@"RELEASE_PARK",nil) forState:UIControlStateNormal];
+    [searchButton setTitle: NSLocalizedString(@"SEARCH_PARK",nil) forState:UIControlStateNormal];
 }
 
 - (void)viewDidUnload
