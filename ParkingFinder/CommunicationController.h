@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CommunicationController : NSObject
+@interface CommunicationController : NSObject{
+    NSMutableURLRequest* urlRequest;
+    
+}
 
-+ (NSMutableURLRequest*) prepareURLforAction: (NSString*) action;
-+ (NSString*)sendRequest: (NSString*) data;
+-(CommunicationController*) initWithAction: (NSString*) action;
+-(NSString*)sendRequest: (NSString*) data;
+
 @end

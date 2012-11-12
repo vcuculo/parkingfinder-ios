@@ -14,9 +14,9 @@
     IBOutlet MKMapView *myMap;
     IBOutlet UIButton *releaseButton;
     IBOutlet UIActivityIndicatorView * activityView;
+    
 }
 
+-(IBAction)sendrequest:(id)sender;
 @property(nonatomic,retain)  UIActivityIndicatorView * activityView;
-
-
 @end

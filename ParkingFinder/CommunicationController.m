@@ -10,25 +10,22 @@
 
 @implementation CommunicationController
 
+NSString *protocol=@"http";
+int port=80;
+NSString *service=@"geoparking";
+NSString *server = @"parking.findu.pl";
 
-static NSString *protocol=@"http";
-static int port=80;
-static NSString *service=@"geoparking";
-static NSString *server = @"parking.findu.pl";
-static NSMutableURLRequest* urlRequest;
-static NSString* response;
-
-+ (NSMutableURLRequest*) prepareURLforAction: (NSString*) action{
+-(CommunicationController*) initWithAction: (NSString*) action{
     NSString *url=[[[[[[protocol stringByAppendingString:@"://"] stringByAppendingString:server] stringByAppendingString:@"/"] stringByAppendingString:service]stringByAppendingString:@"/"] stringByAppendingString:action ];
     NSURL *serverURL = [NSURL URLWithString:url];
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:serverURL];
+    urlRequest = [NSMutableURLRequest requestWithURL:serverURL];
     [urlRequest setHTTPMethod: @"POST"];
     [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [urlRequest setTimeoutInterval:10.0];
-    return urlRequest;
+    return self;
 }
 
-+ (NSString*)sendRequest: (NSString*) data{
+- (NSString*)sendRequest: (NSString*) data{
     NSHTTPURLResponse *responseFromServer;
     [urlRequest setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
     NSError *error;    
