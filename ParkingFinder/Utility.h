@@ -14,4 +14,5 @@
 @interface Utility : NSObject
 +(BOOL)isOnline;
 +(void)showConnectionDialog;
++(void) centerMap:(MKMapView *) map;
 @end
