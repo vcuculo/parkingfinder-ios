@@ -9,6 +9,7 @@
 #import "ReleaseParkingViewController.h"
 #define ALERTVIEW_CONFIRM_TAG 100
 #define ALERTVIEW_INFO_TAG 101
+#define ALERTVIEW_THANKS 102
 
 @interface ReleaseParkingViewController ()
 
@@ -26,6 +27,7 @@ BOOL parked = false;
 double lat, lon;
 int parkId, accuracy, type;
 NSUserDefaults * defaults;
+UINavigationController *navController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +41,7 @@ NSUserDefaults * defaults;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    navController = self.navigationController;
     [self setTitle:NSLocalizedString(@"RELEASE_PARK",nil)];
     defaults = [NSUserDefaults standardUserDefaults];
     
@@ -95,17 +98,26 @@ NSUserDefaults * defaults;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-	if (buttonIndex == 1) {
+    if (buttonIndex == 0){
+        if ([alertView tag] == ALERTVIEW_INFO_TAG){
+            // TODO: send info to server
+            // onReturn
+            UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PARKING_RELEASED",nil)
+                                                             message:NSLocalizedString(@"THANKS",nil) 
+                                                            delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] autorelease];
+            [alert setTag:ALERTVIEW_THANKS];
+            [alert show];
+        }
+        else if ([alertView tag] == ALERTVIEW_THANKS)
+            [navController popViewControllerAnimated:YES];
+    }
+	else if (buttonIndex == 1) {
         if ([alertView tag] == ALERTVIEW_CONFIRM_TAG){
             [self removeParkingInfo];
             [self showReleaseDialog];
-        } else if ([alertView tag] == ALERTVIEW_INFO_TAG) {
+        } else if ([alertView tag] == ALERTVIEW_INFO_TAG)
             [self showInfoDialog];
-        }
 	}
-    else if ([alertView tag] == ALERTVIEW_INFO_TAG) {
-        
-    }
 }
 
 - (IBAction)releaseParking:(id)sender{
@@ -115,7 +127,6 @@ NSUserDefaults * defaults;
 
 - (void) showInfoDialog {
     ParkingInfoViewController *vc = [[ParkingInfoViewController alloc] init];
-    UINavigationController *navController = self.navigationController;
 
     if (parked){
         [vc setLatitude:lat andLongitude:lon andType:type andAccuracy:accuracy];

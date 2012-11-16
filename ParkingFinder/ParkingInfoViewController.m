@@ -7,6 +7,7 @@
 //
 
 #import "ParkingInfoViewController.h"
+#define ALERTVIEW_THANKS 102
 
 @interface ParkingInfoViewController ()
 
@@ -19,6 +20,7 @@ int mType, mAcc;
 NSString* address;
 UIActionSheet* actionSheet;
 UIPickerView *pickerView;
+UINavigationController *navController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,12 +34,12 @@ UIPickerView *pickerView;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    navController = self.navigationController;
     [self setTitle:NSLocalizedString(@"PARKING_FINDER", nil)];
     
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc ] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveParking:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc ] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveParking:)];
     
-    self.navigationItem.rightBarButtonItem = doneButton;
-    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"BACK", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(handleBack:)];
     [self setAddress];
     
     parkingTypes = [[NSMutableArray alloc] init];
@@ -64,6 +66,15 @@ UIPickerView *pickerView;
     [lonLabel setText:[NSString stringWithFormat:@"%f",mLon]];
     [typeText setText: [parkingTypes objectAtIndex: mType]];
     
+}
+
+- (void) handleBack:(id)sender
+{
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PARKING_RELEASED",nil)
+                                                     message:NSLocalizedString(@"THANKS",nil) 
+                                                    delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] autorelease];
+    [alert setTag:ALERTVIEW_THANKS];
+    [alert show];  
 }
 
 - (void)viewDidUnload
@@ -126,9 +137,9 @@ UIPickerView *pickerView;
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     NSInteger len = [textView.text length] ;
-    [counter setText: [NSString stringWithFormat:@"%d",(140 - len)]];
+    [counter setText: [NSString stringWithFormat:@"%d",(141 - len)]];
     if (len > MAX_LENGTH) {
-        textView.text = [textView.text substringToIndex:MAX_LENGTH-1];
+        textView.text = [textView.text substringToIndex:MAX_LENGTH - 1];
         return NO;
     }
     return YES;
@@ -140,19 +151,29 @@ UIPickerView *pickerView;
     actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     
     [actionSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
-    CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
+
+    CGRect pickerFrame, actionFrame, toolbarFrame;
+    
+    if (self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||  self.interfaceOrientation == UIInterfaceOrientationLandscapeRight){
+        pickerFrame = CGRectMake(0, 30, 0, 0);
+        toolbarFrame = CGRectMake(0, 0, 480, 44);
+        actionFrame = CGRectMake(0, 0, 480, 365);
+    }else{
+        pickerFrame = CGRectMake(0, 40, 0, 0);
+        toolbarFrame = CGRectMake(0, 0, 320, 44);
+        actionFrame = CGRectMake(0, 0, 320, 485);
+    }
     
     pickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
     pickerView.showsSelectionIndicator = YES;
     pickerView.dataSource = self;
     pickerView.delegate = self;
-    
     NSInteger row = [parkingTypes indexOfObject:[myTextField text]];
     [pickerView selectRow: row inComponent:0 animated:NO];
     
     [actionSheet addSubview:pickerView];
     
-    UIToolbar* pickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    UIToolbar* pickerToolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
     pickerToolbar.barStyle = UIBarStyleBlackOpaque;
     [pickerToolbar sizeToFit];
     
@@ -161,10 +182,10 @@ UIPickerView *pickerView;
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     [barItems addObject:flexSpace];
     
-    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPressed:)];
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(typeDoneButtonPressed:)];
     [barItems addObject:doneBtn];
     
-    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed:)];
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(typeCancelButtonPressed:)];
     [barItems addObject:cancelBtn];
     
     [pickerToolbar setItems:barItems animated:YES];
@@ -175,22 +196,36 @@ UIPickerView *pickerView;
     
     [actionSheet showInView:self.view];
     
-    [actionSheet setBounds:CGRectMake(0, 0, 320, 485)];
+    [actionSheet setBounds:actionFrame];
+        
       
 }
 
--(void)doneButtonPressed:(id)sender{
+-(void)typeDoneButtonPressed:(id)sender{
     NSInteger row = [pickerView selectedRowInComponent:0];
     typeText.text = (NSString *)[parkingTypes objectAtIndex:row];
 	[actionSheet dismissWithClickedButtonIndex:1 animated:YES];
 }
 
--(void)cancelButtonPressed:(id)sender{
+-(void)typeCancelButtonPressed:(id)sender{
 	[actionSheet dismissWithClickedButtonIndex:1 animated:YES];
 }
 
 -(void)saveParking:(id)sender{
+    // TODO: send info to server
+    
+    
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PARKING_RELEASED",nil)
+                                                     message:NSLocalizedString(@"THANKS",nil) 
+                                                    delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] autorelease];
+    [alert setTag:ALERTVIEW_THANKS];
+    [alert show];
 }                                   
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if ([alertView tag] == ALERTVIEW_THANKS)
+            [navController popViewControllerAnimated:YES];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

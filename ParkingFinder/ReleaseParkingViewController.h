@@ -23,5 +23,5 @@
 -(void) removeParkingInfo;
 -(void) showReleaseDialog;
 -(void) showInfoDialog;
-- (MKAnnotationView *)mapView:(MKMapView *)lmapView viewForAnnotation:(id <MKAnnotation>)annotation;
+-(MKAnnotationView *)mapView:(MKMapView *)lmapView viewForAnnotation:(id <MKAnnotation>)annotation;
 @end

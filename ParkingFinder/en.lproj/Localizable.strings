@@ -25,3 +25,5 @@
 "COMMENT" = "Comment: ";
 "ACTION_DISALLOWED" = "Action not allowed";
 "RELEASE_PARKING_FIRST" = "To search for a new parking, you have to release your current parking first.";
+"PARKING_RELEASED" = "Parking released";
+"THANKS" = "Thanks for your contribution!";
