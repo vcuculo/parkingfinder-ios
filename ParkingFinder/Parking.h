@@ -16,14 +16,14 @@
     NSMutableArray* comments;
     NSString* comment;
     long time;
-    float accuracy;
+    int accuracy;
 }
 
--(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andAcc:(float)acc;
--(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andType:(int) t andCom:(NSMutableArray*) comms andTime:(long) ti andAcc:(float)acc;
--(Parking*) initWithLat: (double) lat andLon:(double) lon andType:(int) t andCom:(NSMutableArray*) comms andTime:(long) ti andAcc:(float)acc;
--(Parking*) initWithLat: (double) lat andLon:(double) lon andType:(int) t andCom:(NSString*) comm andAcc:(float)acc;
--(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andType:(int) t andCom:(NSString*) comm andAcc:(float)acc;
+-(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andAcc:(int)acc;
+-(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andType:(int) t andCom:(NSMutableArray*) comms andTime:(long) ti andAcc:(int)acc;
+-(Parking*) initWithLat: (double) lat andLon:(double) lon andType:(int) t andCom:(NSMutableArray*) comms andTime:(long) ti andAcc:(int)acc;
+-(Parking*) initWithLat: (double) lat andLon:(double) lon andType:(int) t andCom:(NSString*) comm andAcc:(int)acc;
+-(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andType:(int) t andCom:(NSString*) comm andAcc:(int)acc;
 
 @property int idParking;
 @property double latitude;
@@ -32,6 +32,6 @@
 @property (nonatomic,retain) NSMutableArray* comments;
 @property (nonatomic,retain) NSString* comment;
 @property long time;
-@property float accuracy;
+@property int accuracy;
 
 @end

@@ -12,7 +12,7 @@
 
 @synthesize idParking, latitude,longitude,type,comments, comment, time, accuracy;
 
--(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andAcc:(float)acc{
+-(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andAcc:(int)acc{
     self = [super init];
     idParking=idP;
     latitude=lat;
@@ -21,7 +21,7 @@
     return self;
 }
 
--(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andType:(int) t andCom:(NSMutableArray*) comms andTime:(long) ti andAcc:(float)acc {
+-(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andType:(int) t andCom:(NSMutableArray*) comms andTime:(long) ti andAcc:(int)acc {
     self = [super init];
     idParking=idP;
     latitude=lat;
@@ -32,7 +32,7 @@
     return self;
 }
 
--(Parking*) initWithLat: (double) lat andLon:(double) lon andType:(int) t andCom:(NSMutableArray*) comms andTime:(long) ti andAcc:(float)acc{
+-(Parking*) initWithLat: (double) lat andLon:(double) lon andType:(int) t andCom:(NSMutableArray*) comms andTime:(long) ti andAcc:(int)acc{
     self = [super init];
     latitude=lat;
     longitude=lon;
@@ -41,7 +41,7 @@
     accuracy=acc;
     return self;
 }
--(Parking*) initWithLat: (double) lat andLon:(double) lon andType:(int) t andCom:(NSString*) comm andAcc:(float)acc{
+-(Parking*) initWithLat: (double) lat andLon:(double) lon andType:(int) t andCom:(NSString*) comm andAcc:(int)acc{
     self = [super init];    
     latitude=lat;
     longitude=lon;
@@ -50,7 +50,7 @@
     accuracy=acc;
     return self;
 }
--(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andType:(int) t andCom:(NSString*) comm andAcc:(float)acc{
+-(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andType:(int) t andCom:(NSString*) comm andAcc:(int)acc{
     self = [super init];    
     latitude=lat;
     longitude=lon;

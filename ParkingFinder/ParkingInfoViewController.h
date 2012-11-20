@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "Utility.h"
+#import "Parking.h"
+#import "DataController.h"
+#import "CommunicationController.h"
 #define MAX_LENGTH 140
 
 @interface ParkingInfoViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate, UITextFieldDelegate> {
@@ -17,6 +20,6 @@
     IBOutlet UITextField *typeText;
     NSMutableArray *parkingTypes;
 }
-- (void) setLatitude:(double)lat andLongitude:(double)lon andType:(int)type andAccuracy:(int)acc;
 - (void) setAddress;
+- (void) setParking:(Parking*) p;
 @end

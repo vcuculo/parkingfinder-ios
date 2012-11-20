@@ -28,6 +28,8 @@ double lat, lon;
 int parkId, accuracy, type;
 NSUserDefaults * defaults;
 UINavigationController *navController;
+UIActivityIndicatorView * activityView;
+Parking *p;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,6 +43,13 @@ UINavigationController *navController;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    activityView=[[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
+    [activityView setFrame:self.view.frame];
+    [activityView.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
+    activityView.center=self.view.center;
+    [self.view addSubview:activityView];
+    
     navController = self.navigationController;
     [self setTitle:NSLocalizedString(@"RELEASE_PARK",nil)];
     defaults = [NSUserDefaults standardUserDefaults];
@@ -49,8 +58,9 @@ UINavigationController *navController;
     [defaults setBool:YES forKey:PARKED_KEY];
     [defaults setDouble:45.45 forKey:LAT_KEY];
     [defaults setDouble:9.18 forKey:LON_KEY];
-    [defaults setInteger:0 forKey:TYPE_KEY];
-    [defaults setInteger:3 forKey:ID_KEY];
+    [defaults setInteger:3 forKey:TYPE_KEY];
+    [defaults setInteger:0 forKey:ID_KEY];
+    [defaults setInteger:10 forKey:ACC_KEY];
     //FOR DEBUG ONLY
     
     parked = [defaults boolForKey:PARKED_KEY];    
@@ -61,7 +71,7 @@ UINavigationController *navController;
         accuracy = [defaults integerForKey:ACC_KEY];
         type = [defaults integerForKey:TYPE_KEY];
         
-        Parking *p = [[Parking alloc] initWithId:parkId andLat:lat andLon:lon andType:type andCom:nil andAcc:accuracy];
+        p = [[Parking alloc] initWithId:parkId andLat:lat andLon:lon andType:type andCom:nil andAcc:accuracy];
         
         ParkingAnnotation *annotation = [[ParkingAnnotation alloc] initWithParking:p andMyCar: TRUE];
         
@@ -89,7 +99,6 @@ UINavigationController *navController;
     ParkingView *parkingView = (ParkingView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"parkingview"];
     
     if(parkingView == nil) {
-    
         parkingView = [[[ParkingView alloc] initWithAnnotation:annotation reuseIdentifier:@"parkingview"] autorelease];
     }
     
@@ -101,8 +110,14 @@ UINavigationController *navController;
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0){
         if ([alertView tag] == ALERTVIEW_INFO_TAG){
-            // TODO: send info to server
-            // onReturn
+            [activityView startAnimating];
+            
+            NSString *request = [DataController marshallParking:p];
+            CommunicationController *cc = [[CommunicationController alloc]initWithAction:@"freePark"];
+            NSString *response = [cc sendRequest:request];
+            NSLog(response);
+            
+            [activityView stopAnimating];
             UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PARKING_RELEASED",nil)
                                                              message:NSLocalizedString(@"THANKS",nil) 
                                                             delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] autorelease];
@@ -114,6 +129,14 @@ UINavigationController *navController;
     }
 	else if (buttonIndex == 1) {
         if ([alertView tag] == ALERTVIEW_CONFIRM_TAG){
+            // se confermi di liberare il posto dove sei, prendo le coordinate
+            if (!parked){
+                double mLat = myMap.userLocation.location.coordinate.latitude;
+                double mLon = myMap.userLocation.location.coordinate.longitude;
+                int mAcc = myMap.userLocation.location.horizontalAccuracy;
+                p = [[Parking alloc] initWithId:-1 andLat:mLat andLon:mLon andAcc:mAcc];
+            }
+            
             [self removeParkingInfo];
             [self showReleaseDialog];
         } else if ([alertView tag] == ALERTVIEW_INFO_TAG)
@@ -129,17 +152,7 @@ UINavigationController *navController;
 - (void) showInfoDialog {
     ParkingInfoViewController *vc = [[ParkingInfoViewController alloc] init];
 
-    if (parked){
-        [vc setLatitude:lat andLongitude:lon andType:type andAccuracy:accuracy];
-    }
-    else
-    {
-        double mLat = myMap.userLocation.location.coordinate.latitude;
-        double mLon = myMap.userLocation.location.coordinate.longitude;
-        int mAcc = myMap.userLocation.location.horizontalAccuracy;
-
-        [vc setLatitude:mLat andLongitude:mLon andType:0 andAccuracy:mAcc];
-    }
+    [vc setParking:p];
     
     [navController popViewControllerAnimated:NO];
     [navController pushViewController:vc animated:YES];

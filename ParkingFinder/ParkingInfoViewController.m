@@ -21,6 +21,8 @@ NSString* address;
 UIActionSheet* actionSheet;
 UIPickerView *pickerView;
 UINavigationController *navController;
+UIActivityIndicatorView * activityView;
+Parking *mP;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,6 +36,13 @@ UINavigationController *navController;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    activityView=[[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
+    [activityView setFrame:self.view.frame];
+    [activityView.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
+    activityView.center=self.view.center;
+    [self.view addSubview:activityView];
+    
     navController = self.navigationController;
     [self setTitle:NSLocalizedString(@"PARKING_FINDER", nil)];
     
@@ -68,15 +77,6 @@ UINavigationController *navController;
     
 }
 
-- (void) handleBack:(id)sender
-{
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PARKING_RELEASED",nil)
-                                                     message:NSLocalizedString(@"THANKS",nil) 
-                                                    delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] autorelease];
-    [alert setTag:ALERTVIEW_THANKS];
-    [alert show];  
-}
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -88,11 +88,8 @@ UINavigationController *navController;
     [self.view endEditing:YES];
 }
 
-- (void) setLatitude:(double)lat andLongitude:(double)lon andType:(int)type andAccuracy:(int)acc {
-    mLat = lat;
-    mLon = lon;
-    mType = type;
-    mAcc = acc;
+- (void) setParking:(Parking*) p {
+    mP = p;
 }
 
 - (void) setAddress {
@@ -212,7 +209,16 @@ UINavigationController *navController;
 }
 
 -(void)saveParking:(id)sender{
-    // TODO: send info to server
+
+    
+    [activityView startAnimating];
+    // TODO: create parking getting values inserted from user
+    NSString *request = [DataController marshallParking:mP];
+    CommunicationController *cc = [[CommunicationController alloc]initWithAction:@"freePark"];
+    NSString *response = [cc sendRequest:request];
+    NSLog(response);
+    
+    [activityView stopAnimating];
     
     
     UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PARKING_RELEASED",nil)
@@ -221,6 +227,24 @@ UINavigationController *navController;
     [alert setTag:ALERTVIEW_THANKS];
     [alert show];
 }                                   
+
+
+- (void) handleBack:(id)sender
+{
+    [activityView startAnimating];
+    
+    NSString *request = [DataController marshallParking:mP];
+    CommunicationController *cc = [[CommunicationController alloc]initWithAction:@"freePark"];
+    NSString *response = [cc sendRequest:request];
+    NSLog(response);
+    
+    [activityView stopAnimating];   
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PARKING_RELEASED",nil)
+                                                     message:NSLocalizedString(@"THANKS",nil) 
+                                                    delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] autorelease];
+    [alert setTag:ALERTVIEW_THANKS];
+    [alert show];  
+}
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([alertView tag] == ALERTVIEW_THANKS)

@@ -10,9 +10,9 @@
 
 @implementation CommunicationController
 
-NSString *protocol=@"http";
-int port=80;
-NSString *service=@"geoparking";
+NSString *protocol = @"http";
+int port = 80;
+NSString *service = @"geoparking";
 NSString *server = @"parking.findu.pl";
 
 -(CommunicationController*) initWithAction: (NSString*) action{

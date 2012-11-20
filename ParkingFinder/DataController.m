@@ -13,7 +13,7 @@
 + (NSString*) marshallParking: (Parking*) p{
     NSString *lat=[NSString stringWithFormat:@"%f", [p latitude]];
     NSString *lon=[NSString stringWithFormat:@"%f", [p longitude]];
-    NSString *acc=[NSString stringWithFormat:@"%f", [p accuracy]];
+    NSString *acc=[NSString stringWithFormat:@"%d", [p accuracy]];
     NSString *type=[NSString stringWithFormat:@"%d", [p type]];
     
     int idP=[p idParking];
@@ -24,11 +24,11 @@
     [dic setObject:lon forKey:@"lon"];
     [dic setObject:acc forKey:@"accuracy"];
     [dic setObject:type forKey:@"type"];    
-    if(idP>-1){
+    if(idP > -1){
         NSString *idpString=[NSString stringWithFormat:@"%d", idP];
         [dic setObject:idpString forKey:@"id"];
     }
-    if(c!=nil){
+    if(c != nil){
         [dic setObject:c forKey:@"text"];
     }
     SBJsonWriter *writer = [[SBJsonWriter alloc] init];

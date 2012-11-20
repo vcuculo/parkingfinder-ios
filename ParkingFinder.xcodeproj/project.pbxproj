@@ -25,6 +25,7 @@
 		E10C454F165BCB0900EE21E9 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C4543165BCB0900EE21E9 /* SBJsonWriter.m */; };
 		E10C4555165BCB2400EE21E9 /* CommunicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C4552165BCB2400EE21E9 /* CommunicationController.m */; };
 		E10C4556165BCB2400EE21E9 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C4554165BCB2400EE21E9 /* DataController.m */; };
+		E10C4561165BCD0100EE21E9 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C4560165BCD0100EE21E9 /* Comment.m */; };
 		E14CB43A15F354390011BBFA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB43915F354390011BBFA /* UIKit.framework */; };
 		E14CB43C15F354390011BBFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB43B15F354390011BBFA /* Foundation.framework */; };
 		E14CB43E15F354390011BBFA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB43D15F354390011BBFA /* CoreGraphics.framework */; };
@@ -93,6 +94,8 @@
 		E10C4552165BCB2400EE21E9 /* CommunicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunicationController.m; sourceTree = "<group>"; };
 		E10C4553165BCB2400EE21E9 /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
 		E10C4554165BCB2400EE21E9 /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
+		E10C455F165BCD0100EE21E9 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		E10C4560165BCD0100EE21E9 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		E14CB43515F354390011BBFA /* ParkingFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkingFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14CB43915F354390011BBFA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E14CB43B15F354390011BBFA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -225,6 +228,8 @@
 				E10C4552165BCB2400EE21E9 /* CommunicationController.m */,
 				E10C4553165BCB2400EE21E9 /* DataController.h */,
 				E10C4554165BCB2400EE21E9 /* DataController.m */,
+				E10C455F165BCD0100EE21E9 /* Comment.h */,
+				E10C4560165BCD0100EE21E9 /* Comment.m */,
 				E14CB44815F354390011BBFA /* AppDelegate.h */,
 				E14CB44915F354390011BBFA /* AppDelegate.m */,
 				E14CB44B15F354390011BBFA /* ViewController.h */,
@@ -385,6 +390,7 @@
 				E10C454F165BCB0900EE21E9 /* SBJsonWriter.m in Sources */,
 				E10C4555165BCB2400EE21E9 /* CommunicationController.m in Sources */,
 				E10C4556165BCB2400EE21E9 /* DataController.m in Sources */,
+				E10C4561165BCD0100EE21E9 /* Comment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
