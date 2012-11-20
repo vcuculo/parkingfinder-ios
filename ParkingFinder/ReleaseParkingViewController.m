@@ -49,7 +49,8 @@ UINavigationController *navController;
     [defaults setBool:YES forKey:PARKED_KEY];
     [defaults setDouble:45.45 forKey:LAT_KEY];
     [defaults setDouble:9.18 forKey:LON_KEY];
-    [defaults setInteger:0 forKey:ID_KEY];
+    [defaults setInteger:0 forKey:TYPE_KEY];
+    [defaults setInteger:3 forKey:ID_KEY];
     //FOR DEBUG ONLY
     
     parked = [defaults boolForKey:PARKED_KEY];    
