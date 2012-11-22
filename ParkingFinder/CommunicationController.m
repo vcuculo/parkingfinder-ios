@@ -11,9 +11,9 @@
 @implementation CommunicationController
 
 NSString *protocol = @"http";
-int port = 80;
 NSString *service = @"geoparking";
 NSString *server = @"parking.findu.pl";
+int port = 80;
 
 -(CommunicationController*) initWithAction: (NSString*) action{
     NSString *url=[[[[[[protocol stringByAppendingString:@"://"] stringByAppendingString:server] stringByAppendingString:@"/"] stringByAppendingString:service]stringByAppendingString:@"/"] stringByAppendingString:action ];
@@ -27,9 +27,15 @@ NSString *server = @"parking.findu.pl";
 
 - (NSString*)sendRequest: (NSString*) data{
     NSHTTPURLResponse *responseFromServer;
+    NSError *error = nil;
+    
     [urlRequest setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
-    NSError *error;    
+    
     NSData *responseData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&responseFromServer error:&error];
+    
+    if (error)
+        return [@"error: " stringByAppendingString:[NSString stringWithFormat:@"%d", [error code]]];
+                
     NSString *response = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     return response;
 }

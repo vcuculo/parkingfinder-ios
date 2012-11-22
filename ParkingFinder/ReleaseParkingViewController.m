@@ -54,15 +54,6 @@ Parking *p;
     [self setTitle:NSLocalizedString(@"RELEASE_PARK",nil)];
     defaults = [NSUserDefaults standardUserDefaults];
     
-    //FOR DEBUG ONLY
-    [defaults setBool:YES forKey:PARKED_KEY];
-    [defaults setDouble:45.45 forKey:LAT_KEY];
-    [defaults setDouble:9.18 forKey:LON_KEY];
-    [defaults setInteger:3 forKey:TYPE_KEY];
-    [defaults setInteger:0 forKey:ID_KEY];
-    [defaults setInteger:10 forKey:ACC_KEY];
-    //FOR DEBUG ONLY
-    
     parked = [defaults boolForKey:PARKED_KEY];    
     if (parked) {
         lat = [defaults doubleForKey:LAT_KEY];
@@ -116,13 +107,19 @@ Parking *p;
             CommunicationController *cc = [[CommunicationController alloc]initWithAction:@"freePark"];
             NSString *response = [cc sendRequest:request];
             NSLog(response);
-            
             [activityView stopAnimating];
-            UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PARKING_RELEASED",nil)
+            
+            if ([response hasPrefix:@"error: "]){
+                 UIAlertView *error = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"SERVER_ERROR", nil) message: response delegate: self cancelButtonTitle: @"OK" otherButtonTitles: nil];
+                [error show];
+            }
+            else {
+                UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PARKING_RELEASED",nil)
                                                              message:NSLocalizedString(@"THANKS",nil) 
                                                             delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] autorelease];
-            [alert setTag:ALERTVIEW_THANKS];
-            [alert show];
+                [alert setTag:ALERTVIEW_THANKS];
+                [alert show];
+            }
         }
         else if ([alertView tag] == ALERTVIEW_THANKS)
             [navController popViewControllerAnimated:YES];

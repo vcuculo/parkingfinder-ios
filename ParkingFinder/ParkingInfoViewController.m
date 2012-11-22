@@ -15,8 +15,6 @@
 
 @implementation ParkingInfoViewController
 
-double mLat, mLon;
-int mType, mAcc;
 NSString* address;
 UIActionSheet* actionSheet;
 UIPickerView *pickerView;
@@ -71,9 +69,9 @@ Parking *mP;
     [commentText.layer setCornerRadius:8.0f];
     [commentText.layer setMasksToBounds:YES];
     
-    [latLabel setText:[NSString stringWithFormat:@"%f",mLat]];
-    [lonLabel setText:[NSString stringWithFormat:@"%f",mLon]];
-    [typeText setText: [parkingTypes objectAtIndex: mType]];
+    [latLabel setText:[NSString stringWithFormat:@"%f",[mP latitude]]];
+    [lonLabel setText:[NSString stringWithFormat:@"%f",[mP longitude]]];
+    [typeText setText: [parkingTypes objectAtIndex: [mP type]]];
     
 }
 
@@ -95,7 +93,7 @@ Parking *mP;
 - (void) setAddress {
     
     CLGeocoder *geocoder = [[[CLGeocoder alloc] init] autorelease];
-    CLLocation *location = [[[CLLocation alloc] initWithLatitude:mLat longitude:mLon] autorelease];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:[mP latitude] longitude:[mP longitude]];
     
     [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
          
@@ -212,7 +210,14 @@ Parking *mP;
 
     
     [activityView startAnimating];
-    // TODO: create parking getting values inserted from user
+
+    [mP setType: [pickerView selectedRowInComponent:0]];
+    NSString *comment = [[commentText text] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    comment = [comment stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    
+    if ([comment length] > 0)
+        [mP setComment:comment];
+    
     NSString *request = [DataController marshallParking:mP];
     CommunicationController *cc = [[CommunicationController alloc]initWithAction:@"freePark"];
     NSString *response = [cc sendRequest:request];
