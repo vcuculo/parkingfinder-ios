@@ -19,9 +19,9 @@
     
 }
 
--(IBAction)sendrequest:(id)sender;
+-(IBAction)occupyParking:(id)sender;
+-(IBAction)occupyParkingHere:(id)sender;
 - (void)zoomMapViewToFitAnnotations:(MKMapView *)mapView animated:(BOOL)animated;
-
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation;
 @property(nonatomic,retain)  UIActivityIndicatorView * activityView;
 

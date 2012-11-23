@@ -15,8 +15,10 @@
 @implementation SearchParkingViewController
 
 @synthesize activityView;
-static int countTimer=0;
+int countTimer=0;
 static BOOL isFirst=true;
+static double lat=0.000000,lon=0.000000;
+NSTimer *timer;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -64,43 +66,35 @@ static BOOL isFirst=true;
     [activityView startAnimating];    
     NSLog([NSString stringWithFormat:@"%f" ,myMap.userLocation.coordinate.latitude]);
     NSLog([NSString stringWithFormat:@"%f" ,myMap.userLocation.coordinate.longitude]);
-   if(!isFirst){
-       MKUserLocation *loc;
-       CLLocationCoordinate2D *cor={myMap.userLocation.coordinate.latitude,myMap.userLocation.coordinate.longitude};
-       [loc setCoordinate:cor];
-       [self mapView:myMap didUpdateUserLocation:loc];
+    //questo serve per far fare il posizionamento e la richiesta dei parcheggi dopo il back button quando la posizione è rimasta la stessa e non viene richiamato l'apposito metodo
+    if(!isFirst && myMap.userLocation.coordinate.latitude==lat && myMap.userLocation.coordinate.longitude==lon){
+       timer=[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(requestParking) userInfo:nil repeats:YES];
+       [timer fire];
+       countTimer++; 
+       [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
+       [activityView stopAnimating];
+       [self zoomMapViewToFitAnnotations:myMap animated:YES];
        }
     isFirst=false;
     
 }
 
-- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView{
-    if(!isFirst) {
-    if(countTimer==0){
-        NSTimer *timer=[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(requestParking) userInfo:nil repeats:YES];
-        [timer fire];
-        countTimer++;
-    }
-    [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
-    [activityView stopAnimating];
-    //[Utility centerMap:myMap];
-    [self zoomMapViewToFitAnnotations:myMap animated:YES];
-}
-  isFirst=false;
-}
+
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
     if(countTimer==0){
-        NSTimer *timer=[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(requestParking) userInfo:nil repeats:YES];
+        timer=[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(requestParking) userInfo:nil repeats:YES];
         [timer fire];
-        countTimer++;
+        countTimer++;      
     }
     [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
     [activityView stopAnimating];
-    //[Utility centerMap:myMap];
     [self zoomMapViewToFitAnnotations:myMap animated:YES];
-        
+
 }  
+
+
+
 - (void)zoomMapViewToFitAnnotations:(MKMapView *)mapView animated:(BOOL)animated
 { 
     NSArray *annotations = mapView.annotations;
@@ -141,6 +135,7 @@ static BOOL isFirst=true;
 
 
 -(void) requestParking{
+    
     double lat=myMap.userLocation.coordinate.latitude;
     double lon=myMap.userLocation.coordinate.longitude;
     float range=1000;
@@ -152,8 +147,45 @@ static BOOL isFirst=true;
         ParkingAnnotation *annotation=[[ParkingAnnotation alloc] initWithParking:(Parking *)[listParking objectAtIndex:i] andMyCar:FALSE];
         [myMap addAnnotation:annotation];
     }
-    //NSLog(response);
 }
+
+//occupa la posizione senza contattare il server
+-(IBAction)occupyParkingHere:(id)sender{
+    UIAlertView *myAlertView=[[UIAlertView alloc] initWithTitle:@"Parking finder" message:@"Are you occuping this park" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    [myAlertView show];
+}
+
+-(void) alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex==1){
+        //Scivere codice di occupazione del parcheggio
+        double latitude=myMap.userLocation.coordinate.latitude;
+        double longitude=myMap.userLocation.coordinate.longitude;
+        
+        UIAlertView *myAlertView=[[UIAlertView alloc] initWithTitle:@"Parking finder" message:@"Parking occupied" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [myAlertView show]; 
+    }
+}
+
+//occupa la posizione contattando il server
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
+    if ([[view annotation] coordinate].latitude==myMap.userLocation.coordinate.latitude && [[view annotation]coordinate].longitude==myMap.userLocation.coordinate.longitude)
+        return;
+    [self sendOccupyWithParking: (ParkingAnnotation *)[view annotation]];
+    UIAlertView *myAlertView=[[UIAlertView alloc] initWithTitle:@"Parking finder" message:@"Parking occupied" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    [myAlertView show];
+}
+
+//comuncazione col server per occupare un parcheggio
+-(void) sendOccupyWithParking:(ParkingAnnotation*) p{
+    int identifier= [[p parking] idParking];
+    
+    NSString *request=[DataController marshallOccupyParking:identifier];
+    CommunicationController *cc=[[CommunicationController alloc]initWithAction:@"park"];
+    NSString *response=[cc sendRequest:request];
+    NSLog(response);
+
+}
+
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
     if ([annotation class] == MKUserLocation.class) {
@@ -172,10 +204,20 @@ static BOOL isFirst=true;
     return parkingView;
 }
 
-
 - (void)dealloc
 {
+    lat=myMap.userLocation.coordinate.latitude;
+    lon=myMap.userLocation.coordinate.longitude;
     [myMap setDelegate:nil];
 }
 
+-(void) viewWillDisappear:(BOOL)animated {
+    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+        // back button was pressed.  We know this is true because self is no longer
+        // in the navigation stack.
+        [timer invalidate];
+       
+    }
+    [super viewWillDisappear:animated];
+}
 @end
