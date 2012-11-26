@@ -16,7 +16,6 @@
 @interface Utility : NSObject
 +(BOOL)isOnline;
 +(void)showConnectionDialog;
-+(void) centerMap:(MKMapView *) map;
-+ (void)zoomMapViewToFitAnnotations:(MKMapView *)mapView animated:(BOOL)animated;
++(void)zoomMapViewToFitAnnotations:(MKMapView *)mapView animated:(BOOL)animated;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "ParkingView.h"
-
+#define FIVE_MINUTES 300000
 @implementation ParkingView
 
 - (id)initWithAnnotation:(id <MKAnnotation>)annotation 
@@ -31,10 +31,17 @@
         else{
             //check parking type
             Parking* p = [parkingAnnotation parking];
+            long time=[p time];
+
+            if(time>FIVE_MINUTES && time<=FIVE_MINUTES * 2)
+                self.alpha=0.7f;
+            else if (time > FIVE_MINUTES * 2)       
+                self.alpha=0.5f;
+            
             NSInteger type = [p type];
             switch (type) {
                 case 1:
-                    self.image = [UIImage imageNamed:@"free_park.png"]; 
+                    self.image = [UIImage imageNamed:@"free_park.png"];
                     break;
                 case 2:
                     self.image = [UIImage imageNamed:@"toll_park.png"];

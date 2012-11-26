@@ -24,18 +24,6 @@
     [alert show];
 }
 
-+(void) centerMap:(MKMapView *) map{
-    
-    CLLocationCoordinate2D locationUser;
-    locationUser.latitude= map.userLocation.coordinate.latitude;
-    locationUser.longitude=map.userLocation.coordinate.longitude;
-    MKCoordinateRegion region;
-    MKCoordinateSpan span;
-    span.latitudeDelta=0.012;
-    span.longitudeDelta=0.012;
-    region.center=locationUser;
-    [map setRegion:region animated:YES];
-}
 + (void)zoomMapViewToFitAnnotations:(MKMapView *)mapView animated:(BOOL)animated
 { 
     NSArray *annotations = mapView.annotations;

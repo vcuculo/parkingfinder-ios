@@ -29,6 +29,7 @@
     type=t;
     comments=comms;
     accuracy=acc;
+    time=ti;
     return self;
 }
 
@@ -39,6 +40,7 @@
     type=t;
     comments=comms;
     accuracy=acc;
+    time=ti;
     return self;
 }
 -(Parking*) initWithLat: (double) lat andLon:(double) lon andType:(int) t andCom:(NSString*) comm andAcc:(float)acc{
