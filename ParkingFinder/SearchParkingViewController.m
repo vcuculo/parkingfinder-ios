@@ -15,7 +15,6 @@
 @implementation SearchParkingViewController
 
 @synthesize activityView;
-int countTimer=0;
 static BOOL isFirst=true;
 static double lat=0.000000,lon=0.000000;
 NSTimer *timer;
@@ -37,8 +36,6 @@ NSTimer *timer;
     [activityView.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
     activityView.center=self.view.center;
     [self.view addSubview:activityView];
-  
-    
 }
 
 - (void)viewDidUnload
@@ -67,71 +64,33 @@ NSTimer *timer;
     NSLog([NSString stringWithFormat:@"%f" ,myMap.userLocation.coordinate.latitude]);
     NSLog([NSString stringWithFormat:@"%f" ,myMap.userLocation.coordinate.longitude]);
     //questo serve per far fare il posizionamento e la richiesta dei parcheggi dopo il back button quando la posizione è rimasta la stessa e non viene richiamato l'apposito metodo
-    if(!isFirst && myMap.userLocation.coordinate.latitude==lat && myMap.userLocation.coordinate.longitude==lon){
+    if(!isFirst){
        timer=[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(requestParking) userInfo:nil repeats:YES];
        [timer fire];
-       countTimer++; 
        [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
        [activityView stopAnimating];
-       [self zoomMapViewToFitAnnotations:myMap animated:YES];
-       }
-    isFirst=false;
+       [Utility zoomMapViewToFitAnnotations:myMap animated:YES];
+    }
     
 }
 
 
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
-    if(countTimer==0){
+    if(isFirst){
         timer=[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(requestParking) userInfo:nil repeats:YES];
         [timer fire];
-        countTimer++;      
+        isFirst=false;     
     }
     [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
     [activityView stopAnimating];
-    [self zoomMapViewToFitAnnotations:myMap animated:YES];
+    [Utility zoomMapViewToFitAnnotations:myMap animated:YES];
 
 }  
 
 
 
-- (void)zoomMapViewToFitAnnotations:(MKMapView *)mapView animated:(BOOL)animated
-{ 
-    NSArray *annotations = mapView.annotations;
-    int count = [mapView.annotations count];
-    if ( count == 0) { return; } //bail if no annotations
-    
-    //convert NSArray of id <MKAnnotation> into an MKCoordinateRegion that can be used to set the map size
-    //can't use NSArray with MKMapPoint because MKMapPoint is not an id
-    MKMapPoint points[count]; //C array of MKMapPoint struct
-    for( int i=0; i<count; i++ ) //load points C array by converting coordinates to points
-    {
-        CLLocationCoordinate2D coordinate = [(id <MKAnnotation>)[annotations objectAtIndex:i] coordinate];
-        points[i] = MKMapPointForCoordinate(coordinate);
-    }
-    //create MKMapRect from array of MKMapPoint
-    MKMapRect mapRect = [[MKPolygon polygonWithPoints:points count:count] boundingMapRect];
-    //convert MKCoordinateRegion from MKMapRect
-    MKCoordinateRegion region = MKCoordinateRegionForMapRect(mapRect);
-    
-    //add padding so pins aren't scrunched on the edges
-    region.span.latitudeDelta  *= ANNOTATION_REGION_PAD_FACTOR;
-    region.span.longitudeDelta *= ANNOTATION_REGION_PAD_FACTOR;
-    //but padding can't be bigger than the world
-    if( region.span.latitudeDelta > MAX_DEGREES_ARC ) { region.span.latitudeDelta  = MAX_DEGREES_ARC; }
-    if( region.span.longitudeDelta > MAX_DEGREES_ARC ){ region.span.longitudeDelta = MAX_DEGREES_ARC; }
-    
-    //and don't zoom in stupid-close on small samples
-    if( region.span.latitudeDelta  < MINIMUM_ZOOM_ARC ) { region.span.latitudeDelta  = MINIMUM_ZOOM_ARC; }
-    if( region.span.longitudeDelta < MINIMUM_ZOOM_ARC ) { region.span.longitudeDelta = MINIMUM_ZOOM_ARC; }
-    //and if there is a sample of 1 we want the max zoom-in instead of max zoom-out
-    if( count == 1 )
-    { 
-        region.span.latitudeDelta = MINIMUM_ZOOM_ARC;
-        region.span.longitudeDelta = MINIMUM_ZOOM_ARC;
-    }
-    [mapView setRegion:region animated:animated];
-}
+
 
 
 -(void) requestParking{
@@ -164,15 +123,21 @@ NSTimer *timer;
         UIAlertView *myAlertView=[[UIAlertView alloc] initWithTitle:@"Parking finder" message:@"Parking occupied" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [myAlertView show]; 
     }
+    if(buttonIndex==0){
+        
+        NSLog(@"Ciao");
+    }
 }
+
+
 
 //occupa la posizione contattando il server
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
-    if ([[view annotation] coordinate].latitude==myMap.userLocation.coordinate.latitude && [[view annotation]coordinate].longitude==myMap.userLocation.coordinate.longitude)
-        return;
+    if ([view isMemberOfClass:[ParkingView class]]){
     [self sendOccupyWithParking: (ParkingAnnotation *)[view annotation]];
     UIAlertView *myAlertView=[[UIAlertView alloc] initWithTitle:@"Parking finder" message:@"Parking occupied" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
     [myAlertView show];
+}
 }
 
 //comuncazione col server per occupare un parcheggio
@@ -216,7 +181,6 @@ NSTimer *timer;
         // back button was pressed.  We know this is true because self is no longer
         // in the navigation stack.
         [timer invalidate];
-       
     }
     [super viewWillDisappear:animated];
 }
