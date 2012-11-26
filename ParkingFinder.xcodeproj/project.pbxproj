@@ -474,6 +474,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParkingFinder/ParkingFinder-Prefix.pch";
 				INFOPLIST_FILE = "ParkingFinder/ParkingFinder-Info.plist";
@@ -487,6 +488,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ParkingFinder/ParkingFinder-Prefix.pch";
 				INFOPLIST_FILE = "ParkingFinder/ParkingFinder-Info.plist";

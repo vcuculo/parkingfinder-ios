@@ -24,6 +24,7 @@ static NSString *const LON_KEY = @"longitude";
 static NSString *const ACC_KEY = @"accuracy";
 static NSString *const PARKED_KEY = @"parked";
 BOOL parked = false;
+static BOOL isFirst = true;
 double lat, lon;
 int parkId, accuracy, type;
 NSUserDefaults * defaults;
@@ -44,10 +45,10 @@ Parking *p;
 {
     [super viewDidLoad];
     
-    activityView=[[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
+    activityView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
     [activityView setFrame:self.view.frame];
     [activityView.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
-    activityView.center=self.view.center;
+    activityView.center = self.view.center;
     [self.view addSubview:activityView];
     
     navController = self.navigationController;
@@ -68,7 +69,7 @@ Parking *p;
         
         [myMap addAnnotation:annotation];
     }
-}
+    }
 
 - (void)viewDidUnload
 {
@@ -79,6 +80,22 @@ Parking *p;
 - (void) viewDidAppear:(BOOL)animated {
     if (![Utility isOnline])
         [Utility showConnectionDialog]; 
+}
+
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (isFirst){
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        [activityView startAnimating];
+    }else
+        [Utility zoomMapViewToFitAnnotations:myMap animated:YES];
+    isFirst = false;
+}
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [activityView stopAnimating];
+    [Utility zoomMapViewToFitAnnotations:myMap animated:YES];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
@@ -101,12 +118,15 @@ Parking *p;
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0){
         if ([alertView tag] == ALERTVIEW_INFO_TAG){
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
             [activityView startAnimating];
             
             NSString *request = [DataController marshallParking:p];
             CommunicationController *cc = [[CommunicationController alloc]initWithAction:@"freePark"];
             NSString *response = [cc sendRequest:request];
             NSLog(response);
+            
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             [activityView stopAnimating];
             
             if ([response hasPrefix:@"error: "]){
@@ -179,6 +199,10 @@ Parking *p;
     [defaults removeObjectForKey:LON_KEY];
     [defaults removeObjectForKey:ACC_KEY];
     [defaults synchronize];
+}
+
+- (void) dealloc {
+    [myMap setDelegate:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
