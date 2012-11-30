@@ -10,10 +10,8 @@
 #import "DataController.h"
 #import "CommunicationController.h"
 
-#define ALERTVIEW_OCCUPYPARKING_TAG 100
 #define ALERTVIEW_OCCUPYPOSITION_TAG 101
 #define ALERTVIEW_CONFIRM_TAG 102
-
 
 @implementation SearchParkingViewController
 
@@ -74,12 +72,10 @@ static NSString *const PARKED_KEY = @"parked";
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].networkActivityIndicatorVisible=YES;
     [activityView startAnimating];    
-    NSLog([NSString stringWithFormat:@"%f" ,myMap.userLocation.coordinate.latitude]);
-    NSLog([NSString stringWithFormat:@"%f" ,myMap.userLocation.coordinate.longitude]);
     //questo serve per far fare il posizionamento e la richiesta dei parcheggi dopo il back button quando la posizione è rimasta la stessa e non viene richiamato l'apposito metodo
     if(!isFirst){
-       [Utility zoomMapViewToFitAnnotations:myMap animated:YES];
-       timer=[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(requestParking) userInfo:nil repeats:YES];
+       [Utility centerMap: myMap];
+       timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(requestParking) userInfo:nil repeats:YES];
        [timer fire];
        [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
        [activityView stopAnimating];
@@ -90,20 +86,19 @@ static NSString *const PARKED_KEY = @"parked";
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
     if(isFirst){
-        timer=[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(requestParking) userInfo:nil repeats:YES];
+        timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(requestParking) userInfo:nil repeats:YES];
         [timer fire];
-        isFirst=false;     
+        isFirst = false;     
     }
-    [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [activityView stopAnimating];
-    
-
+    [Utility centerMap: myMap];
 }  
 
 -(void) requestParking{
     
-    double lat=myMap.userLocation.coordinate.latitude;
-    double lon=myMap.userLocation.coordinate.longitude;
+    double lat = myMap.userLocation.coordinate.latitude;
+    double lon = myMap.userLocation.coordinate.longitude;
     float range=1000;
     NSString *request=[DataController marshallParkingRequest:lat andLon:lon andRange:range];
     CommunicationController *cc=[[CommunicationController alloc]initWithAction:@"searchParking"];
@@ -116,35 +111,32 @@ static NSString *const PARKED_KEY = @"parked";
         ParkingAnnotation *annotation=[[ParkingAnnotation alloc] initWithParking:(Parking *)[listParking objectAtIndex:i] andMyCar:FALSE];
         [myMap addAnnotation:annotation];
     }
-    [Utility zoomMapViewToFitAnnotations:myMap animated:YES];
 }
 
 //occupa la posizione senza contattare il server
 -(IBAction)occupyParkingHere:(id)sender{
     ptemp= [[Parking alloc] initWithId:-1 andLat:myMap.userLocation.location.coordinate.latitude andLon:myMap.userLocation.location.coordinate.longitude andAcc:myMap.userLocation.location.horizontalAccuracy];
-    [self showConfirmationDialogWithTag: ALERTVIEW_OCCUPYPOSITION_TAG];
-
+    
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"OCCUPY_PARKING",nil)
+                                                     message:NSLocalizedString(@"CONFIRM_OCCUPY_PARKING",nil) 
+                                                    delegate:self cancelButtonTitle:NSLocalizedString(@"CANCEL",nil) otherButtonTitles:@"OK", nil] autorelease];
+    [alert show];
 }
 
 -(void) alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     defaults = [NSUserDefaults standardUserDefaults];
 
     if(buttonIndex == 1){
-        if ([alertView tag] == ALERTVIEW_OCCUPYPARKING_TAG){
-            [self sendOccupyWithParking: pA];
-            [defaults setInteger:[ptemp idParking] forKey:ID_KEY];
-            [defaults setInteger:[ptemp type] forKey:TYPE_KEY];
-        }
         [defaults setDouble:[ptemp latitude] forKey:LAT_KEY];
         [defaults setDouble:[ptemp longitude] forKey:LON_KEY];
         [defaults setInteger:[ptemp accuracy] forKey:ACC_KEY];
-        //Scivere codice di occupazione del parcheggio nelle SharedPreferences
+        [defaults setBool:TRUE forKey:PARKED_KEY];
         
         UIAlertView *myAlertView=[[UIAlertView alloc] initWithTitle:@"Parking finder" message:@"Parking occupied" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [myAlertView setTag:ALERTVIEW_CONFIRM_TAG];
         [myAlertView show]; 
     }
-    if([alertView tag]== ALERTVIEW_CONFIRM_TAG && buttonIndex == 0){
+    if([alertView tag] == ALERTVIEW_CONFIRM_TAG && buttonIndex == 0){
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -152,28 +144,13 @@ static NSString *const PARKED_KEY = @"parked";
 //occupa la posizione contattando il server
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
     if ([view isMemberOfClass:[ParkingView class]]){
-        ptemp=[pA parking];
-        [self showConfirmationDialogWithTag: ALERTVIEW_OCCUPYPARKING_TAG];
+        
+        pA = (ParkingAnnotation*) [view annotation];
+        ptemp = [pA parking];
+        
+        ParkingDetailsViewController *pDetails = [[ParkingDetailsViewController alloc] initWithParking:ptemp];
+        [[self navigationController] pushViewController: pDetails animated:YES];
     }
-}
-
-- (void)showConfirmationDialogWithTag:(int) tag{
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"OCCUPY_PARKING",nil)
-                                                     message:NSLocalizedString(@"CONFIRM_OCCUPY_PARKING",nil) 
-                                                    delegate:self cancelButtonTitle:NSLocalizedString(@"CANCEL",nil) otherButtonTitles:@"OK", nil] autorelease];
-    [alert setTag:tag];
-    [alert show];
-}
-
-//comuncazione col server per occupare un parcheggio
--(void) sendOccupyWithParking:(ParkingAnnotation*) p{
-    int identifier = [[p parking] idParking];
-    
-    NSString *request=[DataController marshallOccupyParking:identifier];
-    CommunicationController *cc=[[CommunicationController alloc]initWithAction:@"park"];
-    NSString *response=[cc sendRequest:request];
-    NSLog(response);
-
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation

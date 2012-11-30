@@ -25,6 +25,10 @@
 		D335B598164809B10052A63C /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = D335B58B164809B10052A63C /* SBJsonUTF8Stream.m */; };
 		D335B599164809B10052A63C /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D335B58D164809B10052A63C /* SBJsonWriter.m */; };
 		D335B59C16480D990052A63C /* Parking.m in Sources */ = {isa = PBXBuildFile; fileRef = D335B59B16480D980052A63C /* Parking.m */; };
+		D3CE929B1668EB5000A47C0D /* ParkingDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CE92991668EB4F00A47C0D /* ParkingDetailsViewController.m */; };
+		D3CE929C1668EB5000A47C0D /* ParkingDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3CE929A1668EB4F00A47C0D /* ParkingDetailsViewController.xib */; };
+		D3CE92A71668FB7F00A47C0D /* NSDateTimeAgo.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3CE929E1668FB7F00A47C0D /* NSDateTimeAgo.strings */; };
+		D3CE92A81668FB7F00A47C0D /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CE92A61668FB7F00A47C0D /* NSDate+TimeAgo.m */; };
 		E14CB43A15F354390011BBFA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB43915F354390011BBFA /* UIKit.framework */; };
 		E14CB43C15F354390011BBFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB43B15F354390011BBFA /* Foundation.framework */; };
 		E14CB43E15F354390011BBFA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14CB43D15F354390011BBFA /* CoreGraphics.framework */; };
@@ -62,8 +66,8 @@
 		D30B6D97164D417C007C77C0 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = SOURCE_ROOT; };
 		D32CFE5916566FE3008058D7 /* ParkingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingView.h; sourceTree = "<group>"; };
 		D32CFE5A16566FFB008058D7 /* ParkingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingView.m; sourceTree = "<group>"; };
-		D335B56B1647EFB00052A63C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		D335B56C1647EFB00052A63C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		D335B56B1647EFB00052A63C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ../Reachability.h; sourceTree = "<group>"; };
+		D335B56C1647EFB00052A63C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ../Reachability.m; sourceTree = "<group>"; };
 		D335B56E1647F8450052A63C /* CommunicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationController.h; sourceTree = "<group>"; };
 		D335B56F1647F8760052A63C /* CommunicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunicationController.m; sourceTree = "<group>"; };
 		D335B571164807030052A63C /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
@@ -95,6 +99,17 @@
 		D335B58D164809B10052A63C /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		D335B59A16480D880052A63C /* Parking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parking.h; sourceTree = "<group>"; };
 		D335B59B16480D980052A63C /* Parking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parking.m; sourceTree = "<group>"; };
+		D3CE92981668EB4F00A47C0D /* ParkingDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingDetailsViewController.h; sourceTree = "<group>"; };
+		D3CE92991668EB4F00A47C0D /* ParkingDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingDetailsViewController.m; sourceTree = "<group>"; };
+		D3CE929A1668EB4F00A47C0D /* ParkingDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParkingDetailsViewController.xib; sourceTree = "<group>"; };
+		D3CE929F1668FB7F00A47C0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/NSDateTimeAgo.strings; sourceTree = "<group>"; };
+		D3CE92A01668FB7F00A47C0D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/NSDateTimeAgo.strings; sourceTree = "<group>"; };
+		D3CE92A11668FB7F00A47C0D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/NSDateTimeAgo.strings; sourceTree = "<group>"; };
+		D3CE92A21668FB7F00A47C0D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/NSDateTimeAgo.strings; sourceTree = "<group>"; };
+		D3CE92A31668FB7F00A47C0D /* pt_BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt_BR; path = pt_BR.lproj/NSDateTimeAgo.strings; sourceTree = "<group>"; };
+		D3CE92A41668FB7F00A47C0D /* zh_Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_Hans; path = zh_Hans.lproj/NSDateTimeAgo.strings; sourceTree = "<group>"; };
+		D3CE92A51668FB7F00A47C0D /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TimeAgo.h"; sourceTree = "<group>"; };
+		D3CE92A61668FB7F00A47C0D /* NSDate+TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TimeAgo.m"; sourceTree = "<group>"; };
 		E14CB43515F354390011BBFA /* ParkingFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkingFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14CB43915F354390011BBFA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E14CB43B15F354390011BBFA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -158,6 +173,11 @@
 		D335B574164809B10052A63C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D3CE929D1668FB7F00A47C0D /* Localization */,
+				D3CE92A51668FB7F00A47C0D /* NSDate+TimeAgo.h */,
+				D3CE92A61668FB7F00A47C0D /* NSDate+TimeAgo.m */,
+				D335B56B1647EFB00052A63C /* Reachability.h */,
+				D335B56C1647EFB00052A63C /* Reachability.m */,
 				D335B575164809B10052A63C /* NSObject+SBJson.h */,
 				D335B576164809B10052A63C /* NSObject+SBJson.m */,
 				D335B577164809B10052A63C /* SBJson.h */,
@@ -187,6 +207,14 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		D3CE929D1668FB7F00A47C0D /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				D3CE929E1668FB7F00A47C0D /* NSDateTimeAgo.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		E14CB42A15F354390011BBFA = {
 			isa = PBXGroup;
 			children = (
@@ -209,8 +237,6 @@
 			isa = PBXGroup;
 			children = (
 				D335B574164809B10052A63C /* Classes */,
-				D335B56B1647EFB00052A63C /* Reachability.h */,
-				D335B56C1647EFB00052A63C /* Reachability.m */,
 				E14CB49F15F36E140011BBFA /* SystemConfiguration.framework */,
 				E14CB46215F35ADF0011BBFA /* CoreLocation.framework */,
 				E14CB46015F35A9F0011BBFA /* MapKit.framework */,
@@ -235,11 +261,11 @@
 				E19E8FCE15F3789D004DD82A /* SearchParkingViewController.h */,
 				E19E8FCF15F3789D004DD82A /* SearchParkingViewController.m */,
 				E19E8FD015F3789D004DD82A /* SearchParkingViewController.xib */,
+				E18852E915F60AEC0029BE07 /* ParkingAnnotation.m */,
 				E18E47FD15F4DCE300F681C2 /* ParkingInfoViewController.h */,
 				E18E47FE15F4DCE300F681C2 /* ParkingInfoViewController.m */,
 				E18E47FF15F4DCE300F681C2 /* ParkingInfoViewController.xib */,
 				E18852E815F60AEC0029BE07 /* ParkingAnnotation.h */,
-				E18852E915F60AEC0029BE07 /* ParkingAnnotation.m */,
 				E18852EF15F610740029BE07 /* ParkingOverlayView.h */,
 				E18852F015F610740029BE07 /* ParkingOverlayView.m */,
 				E14CB44015F354390011BBFA /* Supporting Files */,
@@ -255,6 +281,9 @@
 				D30B6D97164D417C007C77C0 /* Comment.m */,
 				D32CFE5916566FE3008058D7 /* ParkingView.h */,
 				D32CFE5A16566FFB008058D7 /* ParkingView.m */,
+				D3CE92981668EB4F00A47C0D /* ParkingDetailsViewController.h */,
+				D3CE92991668EB4F00A47C0D /* ParkingDetailsViewController.m */,
+				D3CE929A1668EB4F00A47C0D /* ParkingDetailsViewController.xib */,
 			);
 			path = ParkingFinder;
 			sourceTree = "<group>";
@@ -323,6 +352,11 @@
 			knownRegions = (
 				en,
 				English,
+				es,
+				fr,
+				it,
+				pt_BR,
+				zh_Hans,
 			);
 			mainGroup = E14CB42A15F354390011BBFA;
 			productRefGroup = E14CB43615F354390011BBFA /* Products */;
@@ -354,6 +388,8 @@
 				E18852E515F608860029BE07 /* timed_park.png in Resources */,
 				E18852E615F608860029BE07 /* toll_park.png in Resources */,
 				E18852E715F608860029BE07 /* undefined_park.png in Resources */,
+				D3CE929C1668EB5000A47C0D /* ParkingDetailsViewController.xib in Resources */,
+				D3CE92A71668FB7F00A47C0D /* NSDateTimeAgo.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,12 +427,27 @@
 				D335B59C16480D990052A63C /* Parking.m in Sources */,
 				D30B6D98164D417C007C77C0 /* Comment.m in Sources */,
 				D32CFE5B16566FFB008058D7 /* ParkingView.m in Sources */,
+				D3CE929B1668EB5000A47C0D /* ParkingDetailsViewController.m in Sources */,
+				D3CE92A81668FB7F00A47C0D /* NSDate+TimeAgo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		D3CE929E1668FB7F00A47C0D /* NSDateTimeAgo.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3CE929F1668FB7F00A47C0D /* en */,
+				D3CE92A01668FB7F00A47C0D /* es */,
+				D3CE92A11668FB7F00A47C0D /* fr */,
+				D3CE92A21668FB7F00A47C0D /* it */,
+				D3CE92A31668FB7F00A47C0D /* pt_BR */,
+				D3CE92A41668FB7F00A47C0D /* zh_Hans */,
+			);
+			name = NSDateTimeAgo.strings;
+			sourceTree = "<group>";
+		};
 		E14CB44215F354390011BBFA /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

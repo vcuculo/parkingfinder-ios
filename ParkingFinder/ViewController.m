@@ -24,8 +24,8 @@ static NSString *const PARKED_KEY = @"parked";
     
     if (parking){ //abbiamo un parcheggio memorizzato
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Operazione non permessa" 
-                                                        message:@"Per cercare un nuovo parcheggio devi prima liberare quello occupato." 
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ACTION_DISALLOWED" 
+                                                        message:@"RELEASE_PARKING_FIRST" 
                                                        delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         
         [alert show];

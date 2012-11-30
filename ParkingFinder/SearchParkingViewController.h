@@ -11,6 +11,7 @@
 #import "Utility.h"
 #import "ParkingAnnotation.h"
 #import "ParkingView.h"
+#import "ParkingDetailsViewController.h"
 
 @interface SearchParkingViewController : UIViewController <MKMapViewDelegate>{
     IBOutlet MKMapView *myMap;
@@ -21,8 +22,6 @@
 
 - (IBAction)occupyParkingHere:(id)sender;
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation;
-- (void) showConfirmationDialogWithTag:(int) tag;
-- (void) sendOccupyWithParking:(ParkingAnnotation*) p;
 @property(nonatomic,retain)  UIActivityIndicatorView * activityView;
 
 @end

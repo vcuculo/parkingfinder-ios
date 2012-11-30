@@ -11,24 +11,25 @@
 @implementation DataController
 
 + (NSString*) marshallParking: (Parking*) p{
-    NSString *lat=[NSString stringWithFormat:@"%f", [p latitude]];
-    NSString *lon=[NSString stringWithFormat:@"%f", [p longitude]];
-    NSString *acc=[NSString stringWithFormat:@"%f", [p accuracy]];
-    NSString *type=[NSString stringWithFormat:@"%d", [p type]];
+    NSString *lat = [NSString stringWithFormat:@"%f", [p latitude]];
+    NSString *lon = [NSString stringWithFormat:@"%f", [p longitude]];
+    NSString *acc = [NSString stringWithFormat:@"%f", [p accuracy]];
+    NSString *type = [NSString stringWithFormat:@"%d", [p type]];
     
-    int idP=[p idParking];
-    NSString *c=[p comment];
+    int idP = [p idParking];
+    NSString *c = [p comment];
     
-    NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:lat forKey:@"lat"];
     [dic setObject:lon forKey:@"lon"];
     [dic setObject:acc forKey:@"accuracy"];
-    [dic setObject:type forKey:@"type"];    
-    if(idP>-1){
+    [dic setObject:type forKey:@"type"];
+    
+    if(idP > -1){
         NSString *idpString=[NSString stringWithFormat:@"%d", idP];
         [dic setObject:idpString forKey:@"id"];
     }
-    if(c!=nil){
+    if(c != nil){
         [dic setObject:c forKey:@"text"];
     }
     SBJsonWriter *writer = [[SBJsonWriter alloc] init];
@@ -58,24 +59,24 @@
     NSMutableArray *parkingList = [[NSMutableArray alloc] initWithCapacity:jsonParking.count];
     Parking *parkingObject;
     for (NSDictionary *park in jsonParking){
-        int idParking= [[park valueForKey:@"id"] intValue];
-        double lat=[[park valueForKey:@"lat"] doubleValue];
-        double lon=[[park valueForKey:@"lon"] doubleValue];
-        int type=[[park valueForKey:@"type"] intValue];
-        int accuracy=[[park valueForKey:@"accuracy"] intValue];
-        long time=[[park valueForKey:@"date"] longValue];
-        NSMutableArray *jsonComment = [parkings objectForKey:@"comments"];
+        int idParking = [[park valueForKey:@"id"] intValue];
+        double lat = [[park valueForKey:@"lat"] doubleValue];
+        double lon = [[park valueForKey:@"lon"] doubleValue];
+        int type = [[park valueForKey:@"type"] intValue];
+        int accuracy = [[park valueForKey:@"accuracy"] intValue];
+        long time = [[park valueForKey:@"date"] longValue];
+        NSMutableArray *jsonComment = [park objectForKey:@"comments"];
         NSMutableArray *comments = [[NSMutableArray alloc] initWithCapacity:jsonComment.count];
+        
         if([park objectForKey:@"comments"]){
-            
-            for (NSDictionary *com in jsonParking) {
-                int idc= [[com valueForKey:@"comment_id"] intValue];
-                NSString *text= [com valueForKey:@"text"];
-                Comment *c=[[Comment alloc] initWithId:idc andText:text];
+            for (NSDictionary *com in jsonComment) {
+                int idc = [[com valueForKey:@"comment_id"] intValue];
+                NSString *text = [com valueForKey:@"text"];
+                Comment *c = [[Comment alloc] initWithId:idc andText:text];
                 [comments addObject:c];
             }
         }
-        parkingObject=[[Parking alloc] initWithId:idParking andLat:lat andLon:lon andType:type andCom:comments andTime:time andAcc:accuracy];
+        parkingObject = [[Parking alloc] initWithId:idParking andLat:lat andLon:lon andType:type andCom:comments andTime:time andAcc:accuracy];
         [parkingList addObject:parkingObject];
 
     }

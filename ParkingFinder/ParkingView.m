@@ -31,12 +31,14 @@
         else{
             //check parking type
             Parking* p = [parkingAnnotation parking];
-            long time=[p time];
+            long time = [p time];
 
-            if(time>FIVE_MINUTES && time<=FIVE_MINUTES * 2)
-                self.alpha=0.7f;
+            if (time <= FIVE_MINUTES)
+                self.alpha = 1;
+            else if(time > FIVE_MINUTES && time <= FIVE_MINUTES * 2)
+                self.alpha = 0.5f;
             else if (time > FIVE_MINUTES * 2)       
-                self.alpha=0.5f;
+                self.alpha = 0.3f;
             
             NSInteger type = [p type];
             switch (type) {

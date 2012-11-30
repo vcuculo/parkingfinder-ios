@@ -14,8 +14,9 @@
 #define ANNOTATION_REGION_PAD_FACTOR 1.15
 #define MAX_DEGREES_ARC 360
 @interface Utility : NSObject
-+(BOOL)isOnline;
-+(void)showConnectionDialog;
-+(void)zoomMapViewToFitAnnotations:(MKMapView *)mapView animated:(BOOL)animated;
 
++(BOOL) isOnline;
++(void) showConnectionDialog;
++(void) zoomMapViewToFitAnnotations:(MKMapView *)mapView animated:(BOOL)animated;
++(void) centerMap:(MKMapView*)map;
 @end

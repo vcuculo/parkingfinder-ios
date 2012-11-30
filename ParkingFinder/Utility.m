@@ -24,13 +24,19 @@
     [alert show];
 }
 
++ (void) centerMap:(MKMapView*) map {
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
+    MKCoordinateRegion region = MKCoordinateRegionMake(map.userLocation.coordinate, span);
+    [map setRegion:region animated:YES];
+}
+
 + (void)zoomMapViewToFitAnnotations:(MKMapView *)mapView animated:(BOOL)animated
 { 
     NSArray *annotations = mapView.annotations;
     int count = [mapView.annotations count];
-    if ( count == 0) { 
-        MKCoordinateSpan span= MKCoordinateSpanMake(0.005, 0.005);
-        MKCoordinateRegion region= MKCoordinateRegionMake(mapView.userLocation.coordinate, span);
+    if (count == 0) { 
+        MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
+        MKCoordinateRegion region = MKCoordinateRegionMake(mapView.userLocation.coordinate, span);
         [mapView setRegion:region animated:YES];
         return; } //bail if no annotations
     
