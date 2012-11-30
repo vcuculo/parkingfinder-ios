@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  ParkingFinder
+
+  Created by Vittorio Cuculo on 11/9/12.
+  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+*/
+"UNDEFINED_PARKING" = "Undefined";
+"FREE_PARKING" = "Free";
+"TOLL_PARKING" = "Toll";
+"RESIDENTS_PARKING" = "Residents";
+"DISABLED_PARKING" = "For disabled";
+"TIMED_PARKING" = "Timed";
+"RELEASE_PARK" = "Release parking";
+"SEARCH_PARK" = "Need parking";
+"FREEING_PARKING" = "Freeing a Parking";
+"CONFIRM_RELEASE_PARKING" = "Are you freeing this parking?";
+"CANCEL" = "Cancel";
+"ADD_PARK_INFORMATION" = "Would you insert information about the parking you are freeing?";
+"PARKING_FINDER" = "Parking Finder";
+"LATITUDE" = "Latitude: ";
+"LONGITUDE" = "Longitude: ";
+"TYPE" = "Type: ";
+"ADDRESS" = "Address: ";
+"COMMENT" = "Comment: ";
+"ACTION_DISALLOWED" = "Action not allowed";
+"RELEASE_PARKING_FIRST" = "To search for a new parking, you have to release your current parking first.";
+"PARKING_RELEASED" = "Parking released";
+"THANKS" = "Thanks for your contribution!";

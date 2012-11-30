@@ -6,10 +6,13 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@interface ParkingOverlayView : MKOverlayView {
+#import "ParkingAnnotation.h"
+
+@interface ParkingView : MKAnnotationView {
+    ParkingAnnotation* parkingAnnotation;
 }
 
 @end

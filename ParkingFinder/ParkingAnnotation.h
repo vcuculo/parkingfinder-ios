@@ -8,12 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
-#import <CoreLocation/CoreLocation.h>
+#import "Parking.h"
 
 @interface ParkingAnnotation : NSObject <MKAnnotation> {
-    CLLocationCoordinate2D coordinate;
+    Parking* parking;
+    BOOL mycar;
 }
+@property (nonatomic, retain) Parking* parking;
+@property (nonatomic) BOOL mycar;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
-- (id)initWithLocation:(CLLocationCoordinate2D)coord;
+
+- (id)initWithParking:(Parking*) p andMyCar:(BOOL) m;
 
 @end
