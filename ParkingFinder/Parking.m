@@ -60,4 +60,13 @@
     return self;
 }
 
+-(NSString*) getComments{
+    NSString *s = @"";
+    for(Comment *c in comments){
+        s = [[s stringByAppendingString:[c toString]]stringByAppendingString:@"\n"];  
+    }
+    NSLog(@"%@", s);
+    return s;
+}
+
 @end

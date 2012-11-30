@@ -124,7 +124,6 @@ Parking *p;
             NSString *request = [DataController marshallParking:p];
             CommunicationController *cc = [[CommunicationController alloc]initWithAction:@"freePark"];
             NSString *response = [cc sendRequest:request];
-            NSLog(response);
             
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             [activityView stopAnimating];

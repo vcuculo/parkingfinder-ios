@@ -9,9 +9,19 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "Utility.h"
+#import "ParkingAnnotation.h"
+#import "ParkingView.h"
+#import "ParkingDetailsViewController.h"
 
 @interface SearchParkingViewController : UIViewController <MKMapViewDelegate>{
     IBOutlet MKMapView *myMap;
     IBOutlet UIButton *releaseButton;
+    IBOutlet UIActivityIndicatorView * activityView;
+    
 }
+
+- (IBAction)occupyParkingHere:(id)sender;
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation;
+@property(nonatomic,retain)  UIActivityIndicatorView * activityView;
+
 @end

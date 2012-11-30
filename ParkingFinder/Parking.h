@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Comment.h"
 
 @interface Parking : NSObject{
     int idParking;
@@ -24,6 +25,7 @@
 -(Parking*) initWithLat: (double) lat andLon:(double) lon andType:(int) t andCom:(NSMutableArray*) comms andTime:(long) ti andAcc:(int)acc;
 -(Parking*) initWithLat: (double) lat andLon:(double) lon andType:(int) t andCom:(NSString*) comm andAcc:(int)acc;
 -(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andType:(int) t andCom:(NSString*) comm andAcc:(int)acc;
+-(NSString*) getComments;
 
 @property int idParking;
 @property double latitude;
