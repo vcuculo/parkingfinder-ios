@@ -38,9 +38,10 @@ Parking *mP;
     activityView=[[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
     [activityView setFrame:self.view.frame];
     [activityView.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
-    activityView.center=self.view.center;
+    activityView.center = self.view.center;
     [self.view addSubview:activityView];
-    
+    [activityView startAnimating];
+
     navController = self.navigationController;
     [self setTitle:NSLocalizedString(@"PARKING_FINDER", nil)];
     
@@ -94,11 +95,14 @@ Parking *mP;
     
     CLGeocoder *geocoder = [[[CLGeocoder alloc] init] autorelease];
     CLLocation *location = [[CLLocation alloc] initWithLatitude:[mP latitude] longitude:[mP longitude]];
-    
+
     [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-         
+         NSString *addressTxt = NSLocalizedString(@"STREET_NOT_FOUND", nil);
+
          if (error){
-             NSLog(@"Geocode failed with error: %@", error);            
+             NSLog(@"Geocode failed with error: %@", error);
+             [activityView stopAnimating];
+             [addressLabel setText:addressTxt];
              return;
          }
          
@@ -107,11 +111,16 @@ Parking *mP;
              //Get nearby address
              CLPlacemark *placemark = [placemarks objectAtIndex:0];
          
+             
              //String to hold address
-             NSString *addressTxt = [NSString stringWithFormat:@"%@, %@" ,[placemark thoroughfare], [placemark subThoroughfare]];         
-         
+             if ([placemark subThoroughfare] != nil)
+                 addressTxt = [NSString stringWithFormat:@"%@, %@" ,[placemark thoroughfare], [placemark subThoroughfare]];
+             else
+                 addressTxt = [NSString stringWithFormat:@"%@" ,[placemark thoroughfare]];
+             
              //Set the label text to current location
              [addressLabel setText:addressTxt];
+             [activityView stopAnimating];
          }
          
      }];
@@ -221,7 +230,7 @@ Parking *mP;
     NSString *request = [DataController marshallParking:mP];
     CommunicationController *cc = [[CommunicationController alloc]initWithAction:@"freePark"];
     NSString *response = [cc sendRequest:request];
-    NSLog(response);
+    NSLog(@"%@",response);
     
     [activityView stopAnimating];
     
@@ -241,7 +250,7 @@ Parking *mP;
     NSString *request = [DataController marshallParking:mP];
     CommunicationController *cc = [[CommunicationController alloc]initWithAction:@"freePark"];
     NSString *response = [cc sendRequest:request];
-    NSLog(response);
+    NSLog(@"%@",response);
     
     [activityView stopAnimating];   
     UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PARKING_RELEASED",nil)
