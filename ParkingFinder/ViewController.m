@@ -49,11 +49,6 @@ static NSString *const PARKED_KEY = @"parked";
     [releaseButton setTitle: NSLocalizedString(@"RELEASE_PARK",nil) forState:UIControlStateNormal];
     [searchButton setTitle: NSLocalizedString(@"SEARCH_PARK",nil) forState:UIControlStateNormal];
 
-    UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:@"main_portrait.jpg"] drawInRect:self.view.bounds];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
 }
 
 - (void)viewDidUnload
@@ -67,12 +62,29 @@ static NSString *const PARKED_KEY = @"parked";
     return YES;
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    
+    if (UIInterfaceOrientationIsPortrait(orientation))
+        [[UIImage imageNamed:@"main_portrait.jpg"] drawInRect:self.view.bounds];
+    else if (UIInterfaceOrientationIsLandscape(orientation))
+        [[UIImage imageNamed:@"main_landscape.jpg"] drawInRect:self.view.bounds];
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+}
+
 - (void) viewWillAppear:(BOOL)animated
 {
     [[self navigationController] setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
     if (![Utility isOnline])
-        [Utility showConnectionDialog];    
+        [Utility showConnectionDialog];
+
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

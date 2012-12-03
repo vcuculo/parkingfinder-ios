@@ -36,9 +36,9 @@ Parking *mP;
     [super viewDidLoad];
     
     activityView=[[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
-    [activityView setFrame:self.view.frame];
+    [activityView setFrame: self.view.frame];
+    [activityView setCenter: self.view.center];
     [activityView.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
-    activityView.center = self.view.center;
     [self.view addSubview:activityView];
     [activityView startAnimating];
 
@@ -264,6 +264,12 @@ Parking *mP;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [activityView setFrame: self.view.frame];
+    [activityView setCenter: self.view.center];
+    [activityView.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
 }
 
 @end

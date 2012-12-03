@@ -13,7 +13,7 @@
 #import "ParkingView.h"
 #import "ParkingDetailsViewController.h"
 
-@interface SearchParkingViewController : UIViewController <MKMapViewDelegate>{
+@interface SearchParkingViewController : UIViewController <MKMapViewDelegate, UIActionSheetDelegate>{
     IBOutlet MKMapView *myMap;
     IBOutlet UIButton *releaseButton;
     IBOutlet UIActivityIndicatorView * activityView;

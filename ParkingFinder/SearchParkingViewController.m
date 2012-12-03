@@ -31,9 +31,6 @@ static NSString *const PARKED_KEY = @"parked";
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-    }
     return self;
 }
 
@@ -41,12 +38,11 @@ static NSString *const PARKED_KEY = @"parked";
 {
     [super viewDidLoad]; 
     //http://www.theappcodeblog.com/2011/03/09/activity-indicator-tutorial/
-    activityView=[[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
-    [activityView setFrame:self.view.frame];
-    [activityView.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
-    activityView.center = self.view.center;
+    activityView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
     [self.view addSubview:activityView];
-    [self setTitle:@"Search Parking"];
+    [self setTitle:NSLocalizedString(@"SEARCH_PARKING", nil)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc ] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showMenu)];
 }
 
 - (void)viewDidUnload
@@ -54,9 +50,34 @@ static NSString *const PARKED_KEY = @"parked";
     [super viewDidUnload];
 }
 
+- (void) showMenu
+{
+    UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"CANCEL", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"CENTER", nil), NSLocalizedString(@"OPTIONS", nil), NSLocalizedString(@"HELP", nil), NSLocalizedString(@"EXIT", nil), nil];
+    
+    [actionSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+    [actionSheet showInView:self.view];
+}
+
+- (void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 0:
+            [Utility centerMap:myMap];
+            break;
+        case 3:
+            exit(0);
+        default:
+            break;
+    }
+}
+
+
 - (void) viewDidAppear:(BOOL)animated {
     if (![Utility isOnline])
-        [Utility showConnectionDialog]; 
+        [Utility showConnectionDialog];
+    
+    [activityView setFrame: self.view.frame];
+    [activityView setCenter: self.view.center];
+    [activityView.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -96,7 +117,7 @@ static NSString *const PARKED_KEY = @"parked";
     
     [myMap removeAnnotations:myMap.annotations];
     
-    for(int i=0;i<[listParking count];i++){
+    for(int i = 0 ;i < [listParking count];i++){
         ParkingAnnotation *annotation = [[ParkingAnnotation alloc] initWithParking:(Parking *)[listParking objectAtIndex:i] andMyCar:FALSE];
         [myMap addAnnotation:annotation];
     }
@@ -146,16 +167,13 @@ static NSString *const PARKED_KEY = @"parked";
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
-    if ([annotation class] == MKUserLocation.class) {
+    if ([annotation class] == MKUserLocation.class)
         return nil;
-    }
     
     ParkingView *parkingView = (ParkingView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"parkingview"];
     
-    if(parkingView == nil) {
-        
+    if(parkingView == nil)
         parkingView = [[[ParkingView alloc] initWithAnnotation:annotation reuseIdentifier:@"parkingview"] autorelease];
-    }
     
     parkingView.annotation = annotation;
     
@@ -179,6 +197,12 @@ static NSString *const PARKED_KEY = @"parked";
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [activityView setFrame: self.view.frame];
+    [activityView setCenter: self.view.center];
+    [activityView.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
 }
 
 @end

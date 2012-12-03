@@ -45,9 +45,6 @@ Parking *p;
     [super viewDidLoad];
     
     activityView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
-    [activityView setFrame:self.view.frame];
-    [activityView.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
-    activityView.center = self.view.center;
     [self.view addSubview:activityView];
     
     navController = self.navigationController;
@@ -78,7 +75,11 @@ Parking *p;
 
 - (void) viewDidAppear:(BOOL)animated {
     if (![Utility isOnline])
-        [Utility showConnectionDialog]; 
+        [Utility showConnectionDialog];
+    
+    [activityView setFrame: self.view.frame];
+    [activityView setCenter: self.view.center];
+    [activityView.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -206,6 +207,12 @@ Parking *p;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [activityView setFrame: self.view.frame];
+    [activityView setCenter: self.view.center];
+    [activityView.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
 }
 
 @end
