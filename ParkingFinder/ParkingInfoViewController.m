@@ -72,7 +72,7 @@ Parking *mP;
     
     [latLabel setText:[NSString stringWithFormat:@"%f",[mP latitude]]];
     [lonLabel setText:[NSString stringWithFormat:@"%f",[mP longitude]]];
-    [typeText setText: [parkingTypes objectAtIndex: [mP type]]];
+    [typeText setText:[parkingTypes objectAtIndex: [mP type]]];
     
 }
 
@@ -162,7 +162,7 @@ Parking *mP;
         pickerFrame = CGRectMake(0, 30, 0, 0);
         toolbarFrame = CGRectMake(0, 0, 480, 44);
         actionFrame = CGRectMake(0, 0, 480, 365);
-    }else{
+    } else {
         pickerFrame = CGRectMake(0, 40, 0, 0);
         toolbarFrame = CGRectMake(0, 0, 320, 44);
         actionFrame = CGRectMake(0, 0, 320, 485);
@@ -200,9 +200,7 @@ Parking *mP;
     
     [actionSheet showInView:self.view];
     
-    [actionSheet setBounds:actionFrame];
-        
-      
+    [actionSheet setBounds:actionFrame];      
 }
 
 -(void)typeDoneButtonPressed:(id)sender{
@@ -229,8 +227,7 @@ Parking *mP;
     
     NSString *request = [DataController marshallParking:mP];
     CommunicationController *cc = [[CommunicationController alloc]initWithAction:@"freePark"];
-    NSString *response = [cc sendRequest:request];
-    NSLog(@"%@",response);
+    [cc sendRequest:request];
     
     [activityView stopAnimating];
     
@@ -249,8 +246,7 @@ Parking *mP;
     
     NSString *request = [DataController marshallParking:mP];
     CommunicationController *cc = [[CommunicationController alloc]initWithAction:@"freePark"];
-    NSString *response = [cc sendRequest:request];
-    NSLog(@"%@",response);
+    [cc sendRequest:request];
     
     [activityView stopAnimating];   
     UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PARKING_RELEASED",nil)

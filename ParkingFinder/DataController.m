@@ -13,7 +13,7 @@
 + (NSString*) marshallParking: (Parking*) p{
     NSString *lat = [NSString stringWithFormat:@"%f", [p latitude]];
     NSString *lon = [NSString stringWithFormat:@"%f", [p longitude]];
-    NSString *acc = [NSString stringWithFormat:@"%f", [p accuracy]];
+    NSString *acc = [NSString stringWithFormat:@"%d", [p accuracy]];
     NSString *type = [NSString stringWithFormat:@"%d", [p type]];
     
     int idP = [p idParking];
@@ -26,7 +26,7 @@
     [dic setObject:type forKey:@"type"];
     
     if(idP > -1){
-        NSString *idpString=[NSString stringWithFormat:@"%d", idP];
+        NSString *idpString = [NSString stringWithFormat:@"%d", idP];
         [dic setObject:idpString forKey:@"id"];
     }
     if(c != nil){
@@ -39,10 +39,10 @@
 
 + (NSString*) marshallParkingRequest: (double) lat andLon:(double)lon andRange:(float)range{
     
-    NSString *latitude=[NSString stringWithFormat:@"%f", lat];
-    NSString *longitude=[NSString stringWithFormat:@"%f", lon];
-    NSString *rangeP=[NSString stringWithFormat:@"%f", range];
-    NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+    NSString *latitude = [NSString stringWithFormat:@"%f", lat];
+    NSString *longitude = [NSString stringWithFormat:@"%f", lon];
+    NSString *rangeP = [NSString stringWithFormat:@"%f", range];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:latitude forKey:@"lat"];
     [dic setObject:longitude forKey:@"lon"];
     [dic setObject:rangeP forKey:@"range"];

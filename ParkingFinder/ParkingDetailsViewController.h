@@ -17,8 +17,10 @@
     Parking *parking;
     IBOutlet UILabel *lat, *lon, *free;
     IBOutlet UITextView *comments;
+    IBOutlet UILabel *descCommentLabel, *descLatLabel, *descLonLabel, *descFreeLabel;
+
 }
 
--(id) initWithParking: (Parking *) p;
--(void) sendOccupyRequest;
+- (void) sendOccupyRequest;
+- (void) setParking: (Parking *) p;
 @end

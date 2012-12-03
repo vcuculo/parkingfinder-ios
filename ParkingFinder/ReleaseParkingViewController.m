@@ -24,7 +24,6 @@ static NSString *const LON_KEY = @"longitude";
 static NSString *const ACC_KEY = @"accuracy";
 static NSString *const PARKED_KEY = @"parked";
 BOOL parked = false;
-static BOOL isFirst = true;
 double lat, lon;
 int parkId, accuracy, type;
 NSUserDefaults * defaults;
@@ -69,7 +68,7 @@ Parking *p;
         
         [myMap addAnnotation:annotation];
     }
-    }
+}
 
 - (void)viewDidUnload
 {
@@ -84,12 +83,12 @@ Parking *p;
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    if (isFirst){
+    if (myMap.userLocationVisible)
+        [Utility zoomMapViewToFitAnnotations:myMap animated:YES];
+    else {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         [activityView startAnimating];
-    }else
-        [Utility zoomMapViewToFitAnnotations:myMap animated:YES];
-    isFirst = false;
+    }
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{

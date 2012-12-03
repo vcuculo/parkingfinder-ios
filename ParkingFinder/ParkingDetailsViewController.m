@@ -38,14 +38,18 @@ static NSString *const PARKED_KEY = @"parked";
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [descLatLabel setText: NSLocalizedString(@"LATITUDE",nil)];
+    [descLonLabel setText: NSLocalizedString(@"LONGITUDE",nil)];
+    [descFreeLabel setText: NSLocalizedString(@"FREE",nil)];
+    [descCommentLabel setText: NSLocalizedString(@"COMMENTS",nil)];
     
-    // Do any additional setup after loading the view from its nib.
-    [self setTitle: NSLocalizedString(@"PARKING_DETAILS",nil)];
+    NSArray *types = [NSArray arrayWithObjects:NSLocalizedString(@"UNDEFINED_PARKING", nil), NSLocalizedString(@"FREE_PARKING", nil), NSLocalizedString(@"TOLL_PARKING", nil), NSLocalizedString(@"RESIDENTS_PARKING", nil), NSLocalizedString(@"DISABLED_PARKING", nil), NSLocalizedString(@"TIMED_PARKING", nil), nil];
+    
+    [self setTitle: [types objectAtIndex:[parking type]]];
     
     [lat setText:[NSString stringWithFormat:@"%f", [parking latitude]]];
     [lon setText:[NSString stringWithFormat:@"%f", [parking longitude]]];
@@ -55,7 +59,7 @@ static NSString *const PARKED_KEY = @"parked";
     [free setText:[freeSince timeAgo]];
     [comments setText:[parking getComments]];
     
-    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(occupyParking)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"OCCUPY", nil) style:UIBarButtonItemStyleDone target:self action:@selector(occupyParking)];
 }
 
 -(void) alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -102,15 +106,13 @@ static NSString *const PARKED_KEY = @"parked";
     // e.g. self.myOutlet = nil;
 }
 
--(id) initWithParking: (Parking *) p{
+- (void) setParking: (Parking *) p{
     parking = p;
-    return self;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 @end

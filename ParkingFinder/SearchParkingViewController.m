@@ -16,7 +16,7 @@
 @implementation SearchParkingViewController
 
 @synthesize activityView; 
-static BOOL isFirst=true;
+static BOOL isFirst = true;
 ParkingAnnotation *pA;
 Parking *ptemp;
 NSTimer *timer;
@@ -44,7 +44,7 @@ static NSString *const PARKED_KEY = @"parked";
     activityView=[[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
     [activityView setFrame:self.view.frame];
     [activityView.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
-    activityView.center=self.view.center;
+    activityView.center = self.view.center;
     [self.view addSubview:activityView];
     [self setTitle:@"Search Parking"];
 }
@@ -52,36 +52,25 @@ static NSString *const PARKED_KEY = @"parked";
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    
-    // Release any retained subviews of the main view.
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-    
     if (![Utility isOnline])
         [Utility showConnectionDialog]; 
-    
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
 }
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible=YES;
-    [activityView startAnimating];    
-    //questo serve per far fare il posizionamento e la richiesta dei parcheggi dopo il back button quando la posizione è rimasta la stessa e non viene richiamato l'apposito metodo
-    if(!isFirst){
+    // usato per avviare il timer al momento giusto
+    if (myMap.userLocationVisible){
         [Utility centerMap: myMap];
         timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(requestParking) userInfo:nil repeats:YES];
         [timer fire];
-        [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
-        [activityView stopAnimating];
-        
+        isFirst = false;
+    } else {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        [activityView startAnimating];
     }
-    
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
@@ -99,23 +88,23 @@ static NSString *const PARKED_KEY = @"parked";
     
     double lat = myMap.userLocation.coordinate.latitude;
     double lon = myMap.userLocation.coordinate.longitude;
-    float range=1000;
-    NSString *request=[DataController marshallParkingRequest:lat andLon:lon andRange:range];
-    CommunicationController *cc=[[CommunicationController alloc]initWithAction:@"searchParking"];
-    NSString *response=[cc sendRequest:request];
-    NSMutableArray *listParking=[DataController unMarshallParking:response];
+    float range = 1000;
+    NSString *request = [DataController marshallParkingRequest:lat andLon:lon andRange:range];
+    CommunicationController *cc = [[CommunicationController alloc]initWithAction:@"searchParking"];
+    NSString *response = [cc sendRequest:request];
+    NSMutableArray *listParking = [DataController unMarshallParking:response];
     
     [myMap removeAnnotations:myMap.annotations];
     
     for(int i=0;i<[listParking count];i++){
-        ParkingAnnotation *annotation=[[ParkingAnnotation alloc] initWithParking:(Parking *)[listParking objectAtIndex:i] andMyCar:FALSE];
+        ParkingAnnotation *annotation = [[ParkingAnnotation alloc] initWithParking:(Parking *)[listParking objectAtIndex:i] andMyCar:FALSE];
         [myMap addAnnotation:annotation];
     }
 }
 
 //occupa la posizione senza contattare il server
 -(IBAction)occupyParkingHere:(id)sender{
-    ptemp= [[Parking alloc] initWithId:-1 andLat:myMap.userLocation.location.coordinate.latitude andLon:myMap.userLocation.location.coordinate.longitude andAcc:myMap.userLocation.location.horizontalAccuracy];
+    ptemp = [[Parking alloc] initWithId:-1 andLat:myMap.userLocation.location.coordinate.latitude andLon:myMap.userLocation.location.coordinate.longitude andAcc:myMap.userLocation.location.horizontalAccuracy];
     
     UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"OCCUPY_PARKING",nil)
                                                      message:NSLocalizedString(@"CONFIRM_OCCUPY_PARKING",nil) 
@@ -127,6 +116,7 @@ static NSString *const PARKED_KEY = @"parked";
     defaults = [NSUserDefaults standardUserDefaults];
     
     if(buttonIndex == 1){
+        [defaults setInteger:[ptemp idParking] forKey:ID_KEY];
         [defaults setDouble:[ptemp latitude] forKey:LAT_KEY];
         [defaults setDouble:[ptemp longitude] forKey:LON_KEY];
         [defaults setInteger:[ptemp accuracy] forKey:ACC_KEY];
@@ -148,7 +138,8 @@ static NSString *const PARKED_KEY = @"parked";
         pA = (ParkingAnnotation*) [view annotation];
         ptemp = [pA parking];
         
-        ParkingDetailsViewController *pDetails = [[ParkingDetailsViewController alloc] initWithParking:ptemp];
+        ParkingDetailsViewController *pDetails = [[ParkingDetailsViewController alloc] init];
+        [pDetails setParking: ptemp];
         [[self navigationController] pushViewController: pDetails animated:YES];
     }
 }
@@ -176,12 +167,18 @@ static NSString *const PARKED_KEY = @"parked";
     [myMap setDelegate:nil];
 }
 
--(void) viewWillDisappear:(BOOL)animated {
-    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+- (void) viewWillDisappear:(BOOL)animated {
+    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
         // back button was pressed.  We know this is true because self is no longer
         // in the navigation stack.
         [timer invalidate];
     }
     [super viewWillDisappear:animated];
 }
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
+
 @end

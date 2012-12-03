@@ -37,8 +37,8 @@
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIButton" id="245133111">
 						<reference key="NSNextResponder" ref="774585933"/>
-						<int key="NSvFlags">258</int>
-						<string key="NSFrame">{{84, 211}, {153, 37}}</string>
+						<int key="NSvFlags">266</int>
+						<string key="NSFrame">{{84, 358}, {153, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="331773919"/>
@@ -71,10 +71,11 @@
 					</object>
 					<object class="IBUIButton" id="331773919">
 						<reference key="NSNextResponder" ref="774585933"/>
-						<int key="NSvFlags">258</int>
-						<string key="NSFrame">{{82, 256}, {156, 37}}</string>
+						<int key="NSvFlags">266</int>
+						<string key="NSFrame">{{82, 403}, {156, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
 							<string key="IBUIAccessibilityLabel">Libera Parcheggio</string>

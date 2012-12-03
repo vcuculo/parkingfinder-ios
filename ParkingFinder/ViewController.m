@@ -48,6 +48,12 @@ static NSString *const PARKED_KEY = @"parked";
     [super viewDidLoad];
     [releaseButton setTitle: NSLocalizedString(@"RELEASE_PARK",nil) forState:UIControlStateNormal];
     [searchButton setTitle: NSLocalizedString(@"SEARCH_PARK",nil) forState:UIControlStateNormal];
+
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"main_portrait.jpg"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
 }
 
 - (void)viewDidUnload
@@ -70,11 +76,10 @@ static NSString *const PARKED_KEY = @"parked";
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-	if (buttonIndex == 1) {
+	if (buttonIndex == 1)
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=WIFI"]];
-	} else {
+	else
         exit(0);
-	}
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -83,4 +88,16 @@ static NSString *const PARKED_KEY = @"parked";
     [super viewWillDisappear:animated];
 }
 
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    
+    if (UIInterfaceOrientationIsPortrait(fromInterfaceOrientation))
+        [[UIImage imageNamed:@"main_landscape.jpg"] drawInRect:self.view.bounds];
+    else if (UIInterfaceOrientationIsLandscape(fromInterfaceOrientation))
+        [[UIImage imageNamed:@"main_portrait.jpg"] drawInRect:self.view.bounds];
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+}
 @end

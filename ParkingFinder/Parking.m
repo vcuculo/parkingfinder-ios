@@ -14,49 +14,52 @@
 
 -(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andAcc:(int)acc{
     self = [super init];
-    idParking=idP;
-    latitude=lat;
-    longitude=lon;
-    accuracy=acc;
+    idParking = idP;
+    latitude = lat;
+    longitude = lon;
+    accuracy = acc;
     return self;
 }
 
 -(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andType:(int) t andCom:(NSMutableArray*) comms andTime:(long) ti andAcc:(int)acc {
     self = [super init];
-    idParking=idP;
-    latitude=lat;
-    longitude=lon;
-    type=t;
-    comments=comms;
-    accuracy=acc;
+    idParking = idP;
+    latitude = lat;
+    longitude = lon;
+    type = t;
+    time = ti;
+    comments = comms;
+    accuracy = acc;
     return self;
 }
 
 -(Parking*) initWithLat: (double) lat andLon:(double) lon andType:(int) t andCom:(NSMutableArray*) comms andTime:(long) ti andAcc:(int)acc{
     self = [super init];
-    latitude=lat;
-    longitude=lon;
-    type=t;
-    comments=comms;
-    accuracy=acc;
+    latitude = lat;
+    longitude = lon;
+    type = t;
+    time = ti;
+    comments = comms;
+    accuracy = acc;
     return self;
 }
 -(Parking*) initWithLat: (double) lat andLon:(double) lon andType:(int) t andCom:(NSString*) comm andAcc:(int)acc{
     self = [super init];    
-    latitude=lat;
-    longitude=lon;
-    type=t;
-    comment=comm;
-    accuracy=acc;
+    latitude = lat;
+    longitude = lon;
+    type = t;
+    comment = comm;
+    accuracy = acc;
     return self;
 }
 -(Parking*) initWithId: (int) idP andLat:(double) lat andLon:(double) lon andType:(int) t andCom:(NSString*) comm andAcc:(int)acc{
-    self = [super init];    
-    latitude=lat;
-    longitude=lon;
-    type=t;
-    comment=comm;
-    accuracy=acc;
+    self = [super init];
+    idParking = idP;
+    latitude = lat;
+    longitude = lon;
+    type = t;
+    comment = comm;
+    accuracy = acc;
     return self;
 }
 

@@ -23,6 +23,8 @@
 "TYPE" = "Type: ";
 "ADDRESS" = "Address: ";
 "COMMENT" = "Comment: ";
+"COMMENTS" = "Comments: ";
+"FREE" = "Free since: ";
 "ACTION_DISALLOWED" = "Action not allowed";
 "RELEASE_PARKING_FIRST" = "To search for a new parking, you have to release your current parking first.";
 "PARKING_RELEASED" = "Parking released";
