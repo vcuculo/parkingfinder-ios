@@ -59,9 +59,15 @@ static NSString *const PARKED_KEY = @"parked";
 }
 
 - (void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
+
     switch (buttonIndex) {
         case 0:
             [Utility centerMap:myMap];
+            break;
+        case 1:
+            ;
+            SettingsViewController *vc = [[SettingsViewController alloc] init];
+            [[self navigationController] pushViewController:vc animated:YES];
             break;
         case 3:
             exit(0);
@@ -114,6 +120,7 @@ static NSString *const PARKED_KEY = @"parked";
     CommunicationController *cc = [[CommunicationController alloc]initWithAction:@"searchParking"];
     NSString *response = [cc sendRequest:request];
     NSMutableArray *listParking = [DataController unMarshallParking:response];
+    int sizeParking = [myMap.annotations count];
     
     [myMap removeAnnotations:myMap.annotations];
     
@@ -121,6 +128,10 @@ static NSString *const PARKED_KEY = @"parked";
         ParkingAnnotation *annotation = [[ParkingAnnotation alloc] initWithParking:(Parking *)[listParking objectAtIndex:i] andMyCar:FALSE];
         [myMap addAnnotation:annotation];
     }
+    if([listParking count] > sizeParking){
+        // PLAY SOUND
+    }
+        
 }
 
 //occupa la posizione senza contattare il server

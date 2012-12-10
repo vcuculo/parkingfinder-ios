@@ -12,6 +12,8 @@
 #import "ParkingAnnotation.h"
 #import "ParkingView.h"
 #import "ParkingDetailsViewController.h"
+#import "SettingsViewController.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface SearchParkingViewController : UIViewController <MKMapViewDelegate, UIActionSheetDelegate>{
     IBOutlet MKMapView *myMap;

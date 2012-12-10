@@ -17,6 +17,8 @@
 		D7628B4E16691DE700970122 /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = D7628B4C16691DE700970122 /* NSDate+TimeAgo.m */; };
 		D76FD9E4164D669A008D9E78 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D76FD9E6164D669A008D9E78 /* Localizable.strings */; };
 		D791E1A4164816500036C9EC /* Parking.m in Sources */ = {isa = PBXBuildFile; fileRef = D791E1A3164816500036C9EC /* Parking.m */; };
+		D7CEB28016760EE900366DD8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CEB27E16760EE900366DD8 /* SettingsViewController.m */; };
+		D7CEB28116760EE900366DD8 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7CEB27F16760EE900366DD8 /* SettingsViewController.xib */; };
 		D7F6BE571651490F00548B4F /* ParkingInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7F6BE581651490F00548B4F /* ParkingInfoViewController.xib */; };
 		E10C4544165BCB0900EE21E9 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C452C165BCB0900EE21E9 /* NSObject+SBJson.m */; };
 		E10C4545165BCB0900EE21E9 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C452F165BCB0900EE21E9 /* SBJsonParser.m */; };
@@ -85,6 +87,9 @@
 		D76FD9E7164D66A4008D9E78 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D791E1A21648164F0036C9EC /* Parking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parking.h; sourceTree = "<group>"; };
 		D791E1A3164816500036C9EC /* Parking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parking.m; sourceTree = "<group>"; };
+		D7CEB27D16760EE900366DD8 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		D7CEB27E16760EE900366DD8 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		D7CEB27F16760EE900366DD8 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		D7F6BE581651490F00548B4F /* ParkingInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParkingInfoViewController.xib; sourceTree = "<group>"; };
 		E10C452B165BCB0900EE21E9 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		E10C452C165BCB0900EE21E9 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
@@ -289,6 +294,9 @@
 				E14CB46B15F368BB0011BBFA /* Utility.m */,
 				D791E1A21648164F0036C9EC /* Parking.h */,
 				D791E1A3164816500036C9EC /* Parking.m */,
+				D7CEB27D16760EE900366DD8 /* SettingsViewController.h */,
+				D7CEB27E16760EE900366DD8 /* SettingsViewController.m */,
+				D7CEB27F16760EE900366DD8 /* SettingsViewController.xib */,
 			);
 			path = ParkingFinder;
 			sourceTree = "<group>";
@@ -402,6 +410,7 @@
 				D72D9125166CD74D008E80B7 /* ic_launcher.png in Resources */,
 				D73F2A73166CF8A300261178 /* main_landscape.jpg in Resources */,
 				D73F2A74166CF8A300261178 /* main_portrait.jpg in Resources */,
+				D7CEB28116760EE900366DD8 /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +449,7 @@
 				E10C4561165BCD0100EE21E9 /* Comment.m in Sources */,
 				D7628B4016691BAE00970122 /* ParkingDetailsViewController.m in Sources */,
 				D7628B4E16691DE700970122 /* NSDate+TimeAgo.m in Sources */,
+				D7CEB28016760EE900366DD8 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
