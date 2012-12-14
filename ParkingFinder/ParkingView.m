@@ -24,7 +24,7 @@
     
     if([annotation isMemberOfClass:[ParkingAnnotation class]]) {
         parkingAnnotation = (ParkingAnnotation *)annotation;
-        
+
         if([parkingAnnotation mycar])
             //releasing parking
             self.image = [UIImage imageNamed:@"car_icon.png"]; 

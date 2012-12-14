@@ -7,9 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D716F067167B75C00090FC50 /* fivemins_park.png in Resources */ = {isa = PBXBuildFile; fileRef = D716F065167B75C00090FC50 /* fivemins_park.png */; };
+		D716F068167B75C00090FC50 /* tenmins_park.png in Resources */ = {isa = PBXBuildFile; fileRef = D716F066167B75C00090FC50 /* tenmins_park.png */; };
+		D716F06B167B76130090FC50 /* monotone_close_exit_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = D716F06A167B76130090FC50 /* monotone_close_exit_delete.png */; };
+		D716F06D167B83210090FC50 /* helpbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D716F06C167B83210090FC50 /* helpbackground.png */; };
 		D72D9125166CD74D008E80B7 /* ic_launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = D72D9124166CD74D008E80B7 /* ic_launcher.png */; };
 		D73F2A73166CF8A300261178 /* main_landscape.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D73F2A71166CF8A200261178 /* main_landscape.jpg */; };
 		D73F2A74166CF8A300261178 /* main_portrait.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D73F2A72166CF8A200261178 /* main_portrait.jpg */; };
+		D7451357167B2C6100D79336 /* button-14.wav in Resources */ = {isa = PBXBuildFile; fileRef = D7451356167B2C6100D79336 /* button-14.wav */; };
+		D745135A167B2C9A00D79336 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7451359167B2C9A00D79336 /* AudioToolbox.framework */; };
+		D7473E37167B65EE00F03361 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7473E35167B65ED00F03361 /* HelpViewController.m */; };
+		D7473E38167B65EE00F03361 /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7473E36167B65ED00F03361 /* HelpViewController.xib */; };
 		D75DD5501647EF8200075AD3 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D75DD54F1647EF8200075AD3 /* Reachability.m */; };
 		D7628B4016691BAE00970122 /* ParkingDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7628B3E16691BAE00970122 /* ParkingDetailsViewController.m */; };
 		D7628B4116691BAE00970122 /* ParkingDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7628B3F16691BAE00970122 /* ParkingDetailsViewController.xib */; };
@@ -67,9 +75,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D716F065167B75C00090FC50 /* fivemins_park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fivemins_park.png; sourceTree = "<group>"; };
+		D716F066167B75C00090FC50 /* tenmins_park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tenmins_park.png; sourceTree = "<group>"; };
+		D716F06A167B76130090FC50 /* monotone_close_exit_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monotone_close_exit_delete.png; sourceTree = "<group>"; };
+		D716F06C167B83210090FC50 /* helpbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helpbackground.png; sourceTree = "<group>"; };
 		D72D9124166CD74D008E80B7 /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
 		D73F2A71166CF8A200261178 /* main_landscape.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = main_landscape.jpg; sourceTree = "<group>"; };
 		D73F2A72166CF8A200261178 /* main_portrait.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = main_portrait.jpg; sourceTree = "<group>"; };
+		D7451356167B2C6100D79336 /* button-14.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "button-14.wav"; path = "../../Downloads/button-14.wav"; sourceTree = "<group>"; };
+		D7451359167B2C9A00D79336 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D7473E34167B65ED00F03361 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		D7473E35167B65ED00F03361 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		D7473E36167B65ED00F03361 /* HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
 		D75DD54E1647EF8200075AD3 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		D75DD54F1647EF8200075AD3 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		D7628B3D16691BAE00970122 /* ParkingDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingDetailsViewController.h; sourceTree = "<group>"; };
@@ -169,6 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D745135A167B2C9A00D79336 /* AudioToolbox.framework in Frameworks */,
 				E14CB4A015F36E140011BBFA /* SystemConfiguration.framework in Frameworks */,
 				E14CB46315F35ADF0011BBFA /* CoreLocation.framework in Frameworks */,
 				E14CB46115F35A9F0011BBFA /* MapKit.framework in Frameworks */,
@@ -227,6 +245,7 @@
 		E14CB42A15F354390011BBFA = {
 			isa = PBXGroup;
 			children = (
+				D7451356167B2C6100D79336 /* button-14.wav */,
 				D72D9124166CD74D008E80B7 /* ic_launcher.png */,
 				E18852D315F608860029BE07 /* images */,
 				E14CB43F15F354390011BBFA /* ParkingFinder */,
@@ -247,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				E10C452A165BCB0900EE21E9 /* Classes */,
+				D7451359167B2C9A00D79336 /* AudioToolbox.framework */,
 				D75DD54E1647EF8200075AD3 /* Reachability.h */,
 				D75DD54F1647EF8200075AD3 /* Reachability.m */,
 				E14CB49F15F36E140011BBFA /* SystemConfiguration.framework */,
@@ -297,6 +317,9 @@
 				D7CEB27D16760EE900366DD8 /* SettingsViewController.h */,
 				D7CEB27E16760EE900366DD8 /* SettingsViewController.m */,
 				D7CEB27F16760EE900366DD8 /* SettingsViewController.xib */,
+				D7473E34167B65ED00F03361 /* HelpViewController.h */,
+				D7473E35167B65ED00F03361 /* HelpViewController.m */,
+				D7473E36167B65ED00F03361 /* HelpViewController.xib */,
 			);
 			path = ParkingFinder;
 			sourceTree = "<group>";
@@ -316,6 +339,10 @@
 		E18852D315F608860029BE07 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				D716F06C167B83210090FC50 /* helpbackground.png */,
+				D716F06A167B76130090FC50 /* monotone_close_exit_delete.png */,
+				D716F065167B75C00090FC50 /* fivemins_park.png */,
+				D716F066167B75C00090FC50 /* tenmins_park.png */,
 				D73F2A71166CF8A200261178 /* main_landscape.jpg */,
 				D73F2A72166CF8A200261178 /* main_portrait.jpg */,
 				E18852D415F608860029BE07 /* car_icon.png */,
@@ -411,6 +438,12 @@
 				D73F2A73166CF8A300261178 /* main_landscape.jpg in Resources */,
 				D73F2A74166CF8A300261178 /* main_portrait.jpg in Resources */,
 				D7CEB28116760EE900366DD8 /* SettingsViewController.xib in Resources */,
+				D7451357167B2C6100D79336 /* button-14.wav in Resources */,
+				D7473E38167B65EE00F03361 /* HelpViewController.xib in Resources */,
+				D716F067167B75C00090FC50 /* fivemins_park.png in Resources */,
+				D716F068167B75C00090FC50 /* tenmins_park.png in Resources */,
+				D716F06B167B76130090FC50 /* monotone_close_exit_delete.png in Resources */,
+				D716F06D167B83210090FC50 /* helpbackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +483,7 @@
 				D7628B4016691BAE00970122 /* ParkingDetailsViewController.m in Sources */,
 				D7628B4E16691DE700970122 /* NSDate+TimeAgo.m in Sources */,
 				D7CEB28016760EE900366DD8 /* SettingsViewController.m in Sources */,
+				D7473E37167B65EE00F03361 /* HelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,3 +29,9 @@
 "RELEASE_PARKING_FIRST" = "To search for a new parking, you have to release your current parking first.";
 "PARKING_RELEASED" = "Parking released";
 "THANKS" = "Thanks for your contribution!";
+"HELP_TITLE" = "Welcome to ParkingFinder!";
+"HELP_LABEL1" = "This help message will appear only this time, but you can open it again in the Menu, and it is useful to understand what means the markers on the map.\nThese are the colours to identify different types of parking:";
+"HELP_LABEL2" = "Based on the alpha of the marker, you can fastly check the newly freed parkings:";
+"HELP_TRANS1" = "Parking freed <= 5 minutes";
+"HELP_TRANS2" = "Parking freed <= 10 minutes";
+"HELP_TRANS3" = "Parking freed > 10 minutes";

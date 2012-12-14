@@ -13,6 +13,7 @@
 #import "ParkingView.h"
 #import "ParkingDetailsViewController.h"
 #import "SettingsViewController.h"
+#import "HelpViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
 
 @interface SearchParkingViewController : UIViewController <MKMapViewDelegate, UIActionSheetDelegate>{
@@ -21,7 +22,7 @@
     IBOutlet UIActivityIndicatorView * activityView;
     
 }
-
+- (void) showHelp;
 - (IBAction)occupyParkingHere:(id)sender;
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation;
 @property(nonatomic,retain)  UIActivityIndicatorView * activityView;

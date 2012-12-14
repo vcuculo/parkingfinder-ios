@@ -27,6 +27,15 @@ static NSString *const LAT_KEY = @"latitude";
 static NSString *const LON_KEY = @"longitude";
 static NSString *const ACC_KEY = @"accuracy";
 static NSString *const PARKED_KEY = @"parked";
+static NSString *const PREFERENCE_AUDIO = @"my_audio";
+static NSString *const PREFERENCE_RANGE = @"my_range";
+static NSString *const PREFERENCE_REFRESH = @"my_refresh";
+static NSString *const PREFERENCE_FILTER_UNDEFINED = @"undefined";
+static NSString *const PREFERENCE_FILTER_TOLL = @"toll";
+static NSString *const PREFERENCE_FILTER_FREE = @"free";
+static NSString *const PREFERENCE_FILTER_RESERVED = @"reserved";
+static NSString *const PREFERENCE_FILTER_DISABLED = @"disabled";
+static NSString *const PREFERENCE_FILTER_TIMED = @"timed";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,6 +52,12 @@ static NSString *const PARKED_KEY = @"parked";
     [self setTitle:NSLocalizedString(@"SEARCH_PARKING", nil)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc ] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showMenu)];
+    
+    [activityView setFrame: self.view.frame];
+    [activityView setCenter: self.view.center];
+    [activityView.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
+    
+    defaults = [NSUserDefaults standardUserDefaults];
 }
 
 - (void)viewDidUnload
@@ -69,6 +84,9 @@ static NSString *const PARKED_KEY = @"parked";
             SettingsViewController *vc = [[SettingsViewController alloc] init];
             [[self navigationController] pushViewController:vc animated:YES];
             break;
+        case 2:
+            [self showHelp];
+            break;
         case 3:
             exit(0);
         default:
@@ -76,22 +94,21 @@ static NSString *const PARKED_KEY = @"parked";
     }
 }
 
-
 - (void) viewDidAppear:(BOOL)animated {
     if (![Utility isOnline])
         [Utility showConnectionDialog];
-    
-    [activityView setFrame: self.view.frame];
-    [activityView setCenter: self.view.center];
-    [activityView.layer setBackgroundColor:[[UIColor colorWithWhite: 0.0 alpha:0.30] CGColor]];
+    [self showHelp];
 }
 
--(void) viewWillAppear:(BOOL)animated{
+- (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+  
+    float refresh = [defaults floatForKey:PREFERENCE_REFRESH] * 60;
+    
     // usato per avviare il timer al momento giusto
     if (myMap.userLocationVisible){
         [Utility centerMap: myMap];
-        timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(requestParking) userInfo:nil repeats:YES];
+        timer = [NSTimer scheduledTimerWithTimeInterval:refresh target:self selector:@selector(requestParking) userInfo:nil repeats:YES];
         [timer fire];
         isFirst = false;
     } else {
@@ -102,7 +119,8 @@ static NSString *const PARKED_KEY = @"parked";
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
     if(isFirst){
-        timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(requestParking) userInfo:nil repeats:YES];
+        float refresh = [defaults floatForKey:PREFERENCE_REFRESH] * 60;
+        timer = [NSTimer scheduledTimerWithTimeInterval:refresh target:self selector:@selector(requestParking) userInfo:nil repeats:YES];
         [timer fire];
         isFirst = false;     
     }
@@ -111,11 +129,13 @@ static NSString *const PARKED_KEY = @"parked";
     [Utility centerMap: myMap];
 }  
 
--(void) requestParking{
-    
+- (void) requestParking{
+    BOOL sound = [defaults boolForKey: PREFERENCE_AUDIO];
+    float range = [defaults floatForKey:PREFERENCE_RANGE];
+
     double lat = myMap.userLocation.coordinate.latitude;
     double lon = myMap.userLocation.coordinate.longitude;
-    float range = 1000;
+
     NSString *request = [DataController marshallParkingRequest:lat andLon:lon andRange:range];
     CommunicationController *cc = [[CommunicationController alloc]initWithAction:@"searchParking"];
     NSString *response = [cc sendRequest:request];
@@ -125,11 +145,41 @@ static NSString *const PARKED_KEY = @"parked";
     [myMap removeAnnotations:myMap.annotations];
     
     for(int i = 0 ;i < [listParking count];i++){
-        ParkingAnnotation *annotation = [[ParkingAnnotation alloc] initWithParking:(Parking *)[listParking objectAtIndex:i] andMyCar:FALSE];
-        [myMap addAnnotation:annotation];
+        Parking *p = [listParking objectAtIndex:i];       
+        ParkingAnnotation *annotation = [[ParkingAnnotation alloc] initWithParking:(Parking *)p andMyCar:FALSE];
+        
+        switch ([p type]) {
+            case 1:
+                if ([defaults boolForKey: PREFERENCE_FILTER_FREE])
+                    [myMap addAnnotation:annotation];
+                break;
+            case 2:
+                if ([defaults boolForKey: PREFERENCE_FILTER_TOLL])
+                    [myMap addAnnotation:annotation];
+                break;
+            case 3:
+                if ([defaults boolForKey: PREFERENCE_FILTER_RESERVED])
+                    [myMap addAnnotation:annotation];
+                break;
+            case 4:
+                if ([defaults boolForKey: PREFERENCE_FILTER_DISABLED])
+                    [myMap addAnnotation:annotation];
+                break;
+            case 5:
+                if ([defaults boolForKey: PREFERENCE_FILTER_TIMED])
+                    [myMap addAnnotation:annotation];
+                break;
+            default:
+                if ([defaults boolForKey: PREFERENCE_FILTER_UNDEFINED])
+                    [myMap addAnnotation:annotation];
+                break;
+            }
     }
-    if([listParking count] > sizeParking){
-        // PLAY SOUND
+    if([listParking count] > sizeParking && sound){
+        SystemSoundID soundID;
+        NSString *soundFile = [[NSBundle mainBundle]pathForResource:@"button-14" ofType:@"wav"];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:soundFile], &soundID);
+        AudioServicesPlayAlertSound(soundID);
     }
         
 }
@@ -145,7 +195,6 @@ static NSString *const PARKED_KEY = @"parked";
 }
 
 -(void) alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    defaults = [NSUserDefaults standardUserDefaults];
     
     if(buttonIndex == 1){
         [defaults setInteger:[ptemp idParking] forKey:ID_KEY];
@@ -207,8 +256,20 @@ static NSString *const PARKED_KEY = @"parked";
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return YES;
+    if ([self.navigationItem.rightBarButtonItem isEnabled])
+        return YES;
+    else
+        return NO;
 }
+
+- (void) showHelp{
+    HelpViewController *helpView = [[HelpViewController alloc] init];
+    [helpView setNavigationItem:self.navigationItem];
+    helpView.view.backgroundColor = [UIColor clearColor];
+    [self.view addSubview: helpView.view];
+    [self.navigationItem.rightBarButtonItem setEnabled:NO];
+}
+
 
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     [activityView setFrame: self.view.frame];

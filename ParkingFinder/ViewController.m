@@ -15,11 +15,20 @@
 @implementation ViewController
 
 static NSString *const PARKED_KEY = @"parked";
+static NSString *const PREFERENCE_AUDIO = @"my_audio";
+static NSString *const PREFERENCE_RANGE = @"my_range";
+static NSString *const PREFERENCE_REFRESH = @"my_refresh";
+static NSString *const PREFERENCE_FILTER_UNDEFINED = @"undefined";
+static NSString *const PREFERENCE_FILTER_TOLL = @"toll";
+static NSString *const PREFERENCE_FILTER_FREE = @"free";
+static NSString *const PREFERENCE_FILTER_RESERVED = @"reserved";
+static NSString *const PREFERENCE_FILTER_DISABLED = @"disabled";
+static NSString *const PREFERENCE_FILTER_TIMED = @"timed";
+NSUserDefaults *defaults;
 
 - (IBAction)searchButton:(id)sender
 {
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     BOOL parking = [defaults boolForKey:PARKED_KEY];
     
     if (parking){ //abbiamo un parcheggio memorizzato
@@ -49,6 +58,12 @@ static NSString *const PARKED_KEY = @"parked";
     [releaseButton setTitle: NSLocalizedString(@"RELEASE_PARK",nil) forState:UIControlStateNormal];
     [searchButton setTitle: NSLocalizedString(@"SEARCH_PARK",nil) forState:UIControlStateNormal];
 
+    
+    NSDictionary* defaultValues = [[NSDictionary alloc] initWithObjectsAndKeys: [NSNumber numberWithFloat:300], PREFERENCE_RANGE, [NSNumber numberWithFloat:3], PREFERENCE_REFRESH, [NSNumber numberWithBool:TRUE], PREFERENCE_AUDIO, [NSNumber numberWithBool:TRUE], PREFERENCE_FILTER_UNDEFINED, [NSNumber numberWithBool:TRUE], PREFERENCE_FILTER_FREE, [NSNumber numberWithBool:TRUE], PREFERENCE_FILTER_TOLL, [NSNumber numberWithBool:TRUE], PREFERENCE_FILTER_RESERVED, [NSNumber numberWithBool:TRUE], PREFERENCE_FILTER_DISABLED, [NSNumber numberWithBool:TRUE], PREFERENCE_FILTER_TIMED, nil]; 
+    
+    defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults registerDefaults:defaultValues];
 }
 
 - (void)viewDidUnload

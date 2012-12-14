@@ -62,13 +62,9 @@ NSMutableArray *checkedParkingType;
     [parkingTypes addObject:NSLocalizedString(@"RESIDENTS_PARKING",nil)];
     [parkingTypes addObject:NSLocalizedString(@"DISABLED_PARKING",nil)];
     [parkingTypes addObject:NSLocalizedString(@"TIMED_PARKING",nil)];
-
-    NSDictionary* defaultValues = [[NSDictionary alloc] initWithObjectsAndKeys: [NSNumber numberWithFloat:300], PREFERENCE_RANGE, [NSNumber numberWithFloat:3], PREFERENCE_REFRESH, [NSNumber numberWithBool:TRUE], PREFERENCE_AUDIO, [NSNumber numberWithBool:TRUE], PREFERENCE_FILTER_UNDEFINED, [NSNumber numberWithBool:TRUE], PREFERENCE_FILTER_FREE, [NSNumber numberWithBool:TRUE], PREFERENCE_FILTER_TOLL, [NSNumber numberWithBool:TRUE], PREFERENCE_FILTER_RESERVED, [NSNumber numberWithBool:TRUE], PREFERENCE_FILTER_DISABLED, [NSNumber numberWithBool:TRUE], PREFERENCE_FILTER_TIMED, nil]; 
     
     defaults = [NSUserDefaults standardUserDefaults];
-    
-    [defaults registerDefaults:defaultValues];
-    
+        
     parkingFilter.delegate = self;
     parkingFilter.dataSource = self;
 }
@@ -134,8 +130,8 @@ NSMutableArray *checkedParkingType;
 }
 
 - (void)saveSettings:(id)sender{
-    float range = [rangeSlider value];
-    float refresh = [refreshSlider value];
+    float range = [[rangeValueLabel text] floatValue];
+    float refresh = [[refreshValueLabel text] floatValue];
     BOOL sound = [audioSwitch isOn];
     
     for (int i = 0; i < 6; i++)
