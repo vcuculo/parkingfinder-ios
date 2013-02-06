@@ -45,7 +45,7 @@ NSMutableArray *checkedParkingType;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitle:NSLocalizedString(@"SETTINGS_VIEW", nil)];
+    [self setTitle:NSLocalizedString(@"OPTIONS", nil)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc ] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveSettings:)];
     

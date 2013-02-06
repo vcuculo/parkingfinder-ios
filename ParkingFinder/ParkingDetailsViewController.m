@@ -74,7 +74,7 @@ static NSString *const PARKED_KEY = @"parked";
         [defaults setInteger:[parking accuracy] forKey:ACC_KEY];
         [defaults setBool:TRUE forKey:PARKED_KEY];
         
-        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Parking finder" message:@"Parking occupied" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"OCCUPY_PARKING",nil) message:NSLocalizedString(@"PARKING_OCCUPIED",nil) delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [myAlertView setTag:ALERTVIEW_CONFIRM_TAG];
         [myAlertView show]; 
     }

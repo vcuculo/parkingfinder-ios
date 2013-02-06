@@ -36,6 +36,7 @@ static NSString *const PREFERENCE_FILTER_FREE = @"free";
 static NSString *const PREFERENCE_FILTER_RESERVED = @"reserved";
 static NSString *const PREFERENCE_FILTER_DISABLED = @"disabled";
 static NSString *const PREFERENCE_FILTER_TIMED = @"timed";
+static NSString *const PREFERENCE_HELP = @"help";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,7 +50,7 @@ static NSString *const PREFERENCE_FILTER_TIMED = @"timed";
     //http://www.theappcodeblog.com/2011/03/09/activity-indicator-tutorial/
     activityView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
     [self.view addSubview:activityView];
-    [self setTitle:NSLocalizedString(@"SEARCH_PARKING", nil)];
+    [self setTitle:NSLocalizedString(@"SEARCH_PARK", nil)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc ] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showMenu)];
     
@@ -97,16 +98,18 @@ static NSString *const PREFERENCE_FILTER_TIMED = @"timed";
 - (void) viewDidAppear:(BOOL)animated {
     if (![Utility isOnline])
         [Utility showConnectionDialog];
-    [self showHelp];
+    if (![defaults boolForKey: PREFERENCE_HELP]){
+        [self showHelp];
+        [defaults setBool:TRUE forKey:PREFERENCE_HELP];
+    }
 }
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
   
     float refresh = [defaults floatForKey:PREFERENCE_REFRESH] * 60;
-    
     // usato per avviare il timer al momento giusto
-    if (myMap.userLocationVisible){
+    if (myMap.userLocation.location != nil){
         [Utility centerMap: myMap];
         timer = [NSTimer scheduledTimerWithTimeInterval:refresh target:self selector:@selector(requestParking) userInfo:nil repeats:YES];
         [timer fire];
@@ -203,7 +206,7 @@ static NSString *const PREFERENCE_FILTER_TIMED = @"timed";
         [defaults setInteger:[ptemp accuracy] forKey:ACC_KEY];
         [defaults setBool:TRUE forKey:PARKED_KEY];
         
-        UIAlertView *myAlertView=[[UIAlertView alloc] initWithTitle:@"Parking finder" message:@"Parking occupied" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        UIAlertView *myAlertView=[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"OCCUPY_PARKING",nil) message:NSLocalizedString(@"PARKING_OCCUPIED",nil) delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [myAlertView setTag:ALERTVIEW_CONFIRM_TAG];
         [myAlertView show]; 
     }

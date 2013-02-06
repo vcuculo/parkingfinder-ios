@@ -1,24 +1,51 @@
-/* 
-  Localizable.strings
-  ParkingFinder
-
-  Created by Vittorio Cuculo on 11/9/12.
-  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-*/
-"UNDEFINED_PARKING" = "Undefined";
-"FREE_PARKING" = "Free";
-"TOLL_PARKING" = "Toll";
-"RESIDENTS_PARKING" = "Residents";
-"DISABLED_PARKING" = "For disabled";
-"TIMED_PARKING" = "Timed";
-"RELEASE_PARK" = "Release parking";
-"FREEING_PARKING" = "Freeing a Parking";
-"CONFIRM_RELEASE_PARKING" = "Are you freeing this parking?";
-"CANCEL" = "Cancel";
-"ADD_PARK_INFORMATION" = "Would you insert information about the parking you are freeing?";
+/*
+ Localizable.strings
+ ParkingFinder
+ 
+ Created by Vittorio Cuculo on 11/9/12.
+ Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+ */
+"UNDEFINED_PARKING" = "Non definito";
+"FREE_PARKING" = "Libero";
+"TOLL_PARKING" = "A pagamento";
+"RESIDENTS_PARKING" = "Per residenti";
+"DISABLED_PARKING" = "Per disabili";
+"TIMED_PARKING" = "A tempo";
+"RELEASE_PARK" = "Libera Parcheggio ";
+"SEARCH_PARK" = "Trova Parcheggio";
+"FREEING_PARKING" = "Stai liberando un parcheggio";
+"CONFIRM_RELEASE_PARKING" = "Vuoi lasciare questo parcheggio?";
+"CANCEL" = "Annulla";
+"ADD_PARK_INFORMATION" = "Vuoi inserire delle informazioni sul parcheggio che stai liberando?";
 "PARKING_FINDER" = "Parking Finder";
-"LATITUDE" = "Latitude: ";
-"LONGITUDE" = "Longitude: ";
-"TYPE" = "Type: ";
-"ADDRESS" = "Address: ";
-"COMMENT" = "Comment: ";
+"LATITUDE" = "Latitudine: ";
+"LONGITUDE" = "Longitudine: ";
+"TYPE" = "Tipo: ";
+"ADDRESS" = "Indirizzo: ";
+"COMMENT" = "Commento: ";
+"COMMENTS" = "Commenti: ";
+"FREE" = "Libero da: ";
+"ACTION_DISALLOWED" = "Azione non permessa";
+"RELEASE_PARKING_FIRST" = "Per cercare nuovi parcheggi devi rilasciare il parcheggio che hai precedentemente occupato.";
+"PARKING_RELEASED" = "Parcheggio liberato";
+"THANKS" = "Grazie per il tuo contributo!";
+"HELP_TITLE" = "Benvenuto in ParkingFinder!";
+"HELP_LABEL1" = "Questo messaggio di aiuto apparirà solo questa volta, ma potrai visualizzarlo di nuovo attraverso il Menu, ti aiuterà a capire il significato dei simboli sulla mappa.\nQuesti sono i colori che identificano il tipo di parcheggio:";
+"HELP_LABEL2" = "Basandoti sulla trasparenza del simbolo, puoi controllare gli ultimi parcheggi liberati:";
+"HELP_TRANS1" = "Parcheggio liberato da < 5 minuti";
+"HELP_TRANS2" = "Parcheggio liberato da < 10 minuti";
+"HELP_TRANS3" = "Parcheggio liberato da > 10 minuti";
+"OCCUPY" = "Occupa";
+"OCCUPY_PARKING" = "Stai occupando un parcheggio";
+"CONFIRM_OCCUPY_PARKING" = "Vuoi occupare questo parcheggio?";
+"PARKING_OCCUPIED" = "Parcheggio occupato";
+"STREET_NOT_FOUND" = "N/A";
+"SERVER_ERROR" = "Errore di rete";
+"CENTER" = "Centra mappa";
+"OPTIONS" = "Impostazioni";
+"HELP" = "Aiuto";
+"EXIT" = "Esci";
+"PREFERENCE_RANGE" = "Distanza di ricerca (metri): ";
+"PREFERENCE_REFRESH" = "Tempo di ricerca (minuti): ";
+"PREFERENCE_SOUND" = "Suono notifiche";
+"PREFERENCE_TYPE" = "Tipi di parcheggio: ";
